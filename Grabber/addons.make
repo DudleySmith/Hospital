@@ -1,0 +1,4 @@
+ofxGui
+ofxBluestorkGrabber
+ofxGStreamer
+ofxHttpUtils
