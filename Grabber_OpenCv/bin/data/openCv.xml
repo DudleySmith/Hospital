@@ -1,0 +1,8 @@
+<openCv>
+	<threshold>45</threshold>
+	<brightness>0.22</brightness>
+	<contrast>0.47</contrast>
+	<blur>1</blur>
+	<Draw>1</Draw>
+<openCv/>
+</openCv>

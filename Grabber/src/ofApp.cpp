@@ -2,11 +2,22 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
-	axisGrabber = ofPtr<ofxBluestorkGrabber>(new ofxBluestorkGrabber);
-	axisGrabber->setCameraAddress("192.168.3.101");
-	grabber.setGrabber(axisGrabber);
-	grabber.initGrabber(640,480);
+    
+    othersPanel.setup("others");
+    othersPanel.add(m_pAdress.set("adress", "192.168.3.101"));
+    othersPanel.add(m_pWidth.set("width", 640));
+    othersPanel.add(m_pHeight.set("height", 480));
+    othersPanel.setPosition(10, 300);
+    othersPanel.loadFromFile("settings.xml");
+    
+    bluestrokGrabber = ofPtr<ofxBluestorkGrabber>(new ofxBluestorkGrabber);
+	bluestrokGrabber->setCameraAddress(m_pAdress);
+    
+	grabber.setGrabber(bluestrokGrabber);
+	grabber.initGrabber(m_pWidth,m_pHeight);
 
+    grabberPanel.setup(bluestrokGrabber->parameters);
+    
 }
 
 //--------------------------------------------------------------
@@ -16,7 +27,11 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-	grabber.draw(0,0);
+	grabber.draw(ofGetWidth() - m_pWidth,0);
+
+    grabberPanel.draw();
+    othersPanel.draw();
+    
 }
 
 //--------------------------------------------------------------

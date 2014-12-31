@@ -1,0 +1,13 @@
+<osc>
+	<ready>0</ready>
+	<send>1</send>
+	<host>127.0.0.1</host>
+	<port>1551</port>
+	<prefix>cam</prefix>
+	<idxCam>1</idxCam>
+	<IdSent>cam1</IdSent>
+<osc/>
+<randomId>1</randomId>
+	<revertX>0</revertX>
+	<revertY>1</revertY>
+</osc>

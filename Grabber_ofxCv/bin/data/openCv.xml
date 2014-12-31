@@ -1,0 +1,15 @@
+<openCv>
+	<threshold>31.875</threshold>
+	<brightness>0.49</brightness>
+	<contrast>0.68</contrast>
+	<blur>1</blur>
+	<Draw>1</Draw>
+<openCv/>
+<minArea>7.65</minArea>
+	<maxArea>68.85</maxArea>
+	<persistence>15</persistence>
+	<maxDistance>32</maxDistance>
+	<labels>1</labels>
+<ResultBrightness>0.6</ResultBrightness>
+	<ResultContrast>0.75</ResultContrast>
+</openCv>
