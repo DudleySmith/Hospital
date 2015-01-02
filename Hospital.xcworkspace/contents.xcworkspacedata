@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Workspace
    version = "1.0">
+   <FileRef
+      location = "group:../../examples/addons/kinectExample/kinectExample.xcodeproj">
+   </FileRef>
    <Group
       location = "container:"
       name = "ofxCv examples">
@@ -26,5 +29,8 @@
    </FileRef>
    <FileRef
       location = "group:Grabber_ofxCv/Grabber_ofxCv.xcodeproj">
+   </FileRef>
+   <FileRef
+      location = "group:Grabber_MultiSources/Grabber_MultiSources.xcodeproj">
    </FileRef>
 </Workspace>
