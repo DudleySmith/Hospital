@@ -17,6 +17,8 @@ void ofApp::setup(){
             break;
         case 1:
             // Movei file
+            vidPlayer.loadMovie(m_pMoviePath);
+            vidPlayer.play();
             break;
         case 2:
             // Kinect -----
@@ -54,6 +56,7 @@ void ofApp::setupPanelSource(){
     
     cameraPanel.add(m_pSource.set("source", 0, 0, 2));
     cameraPanel.add(m_pSourceDisplay.set("sourceDisplay", ""));
+    cameraPanel.add(m_pMoviePath.set("moviePath", "fingers.mov"));
     cameraPanel.add(m_pAdress.set("adress", "192.168.3.101"));
     cameraPanel.add(m_pGrabWidth.set("grabWidth", 320, 320, 1280));
     cameraPanel.add(m_pGrabHeight.set("grabHeight", 240, 240, 768));
@@ -77,7 +80,7 @@ void ofApp::setupPanelOpenCv(){
     openCvPanel.add(m_pFarThreshold.set("farRhreshold", 80, 0, 255));
     openCvPanel.add(m_pBrightness.set("brightness", 0, -1, 1));
     openCvPanel.add(m_pContrast.set("contrast", 0, -1, 1));
-    openCvPanel.add(m_pBlur.set("blur", false));
+    openCvPanel.add(m_pBlur.set("blur", 0, 0, 100));
     openCvPanel.add(m_pSetBg.setup("Set Background"));
     openCvPanel.add(m_pDraw.setup("Draw", true));
     openCvPanel.loadFromFile("openCv.xml");
@@ -141,26 +144,32 @@ void ofApp::setupKinect(){
 //--------------------------------------------------------------
 void ofApp::update(){
     
-    bool doUpdate = false;
+    bool bNewFrame = false;
     
     switch (m_pSource) {
         case 0:
             // Ip camera -----------
             updateIpCam();
-            doUpdate = videoGrabber.isFrameNew();
-            if (doUpdate==true) {
+            bNewFrame = videoGrabber.isFrameNew();
+            if (bNewFrame==true) {
                 colorImg.setFromPixels(videoGrabber.getPixels(), m_pGrabWidth, m_pGrabHeight);
                 grayImage = colorImg;
             }
             break;
         case 1:
             // Movei file
+            vidPlayer.update();
+            bNewFrame = vidPlayer.isFrameNew();
+            if (bNewFrame==true) {
+                colorImg.setFromPixels(vidPlayer.getPixels(), m_pGrabWidth, m_pGrabHeight);
+                grayImage = colorImg;
+            }
             break;
         case 2:
             // Kinect -----
             updateKinect();
-            doUpdate = kinect.isFrameNew();
-            if (doUpdate==true) {
+            bNewFrame = kinect.isFrameNew();
+            if (bNewFrame==true) {
                 grayImage.setFromPixels(kinect.getDepthPixels(), m_pGrabWidth, m_pGrabHeight);
             }
             break;
@@ -169,7 +178,7 @@ void ofApp::update(){
             break;
     }
     
-    if (doUpdate==true) {
+    if (bNewFrame==true) {
         updateOpenCv();
         updateOsc();
     }
@@ -192,22 +201,26 @@ void ofApp::updateOpenCv(){
     grayImage.brightnessContrast(m_pBrightness, m_pContrast);
     
     // take the abs value of the difference between background and incoming and then threshold:
-    grayDiff.absDiff(grayBg, grayImage);
     
     if(m_pTwoThreshold == true){
-        // Old way : one threshold
-        grayDiff.threshold(m_pThreshold);
-    }else{
         // New way
         grayThreshNear = grayImage;
         grayThreshFar = grayImage;
         grayThreshNear.threshold(m_pNearThreshold, true);
         grayThreshFar.threshold(m_pFarThreshold);
-        cvAnd(grayThreshNear.getCvImage(), grayThreshFar.getCvImage(), grayImage.getCvImage(), NULL);
+        cvAnd(grayThreshNear.getCvImage(), grayThreshFar.getCvImage(), grayDiff.getCvImage(), NULL);
+    }else{
+        // Old way : one threshold
+        grayDiff.absDiff(grayBg, grayImage);
+        grayDiff.threshold(m_pThreshold);
     }
 
-    if(m_pBlur)
-        grayDiff.blurHeavily();
+    if(m_pBlur > 0){
+        //grayDiff.blurHeavily();
+        grayDiff.blurGaussian(m_pBlur);
+    }
+    
+    
     
     // find contours which are between the size of 20 pixels and 1/3 the w*h pixels.
     // also, find holes is set to true so we will get interior contours as well....
@@ -313,29 +326,67 @@ void ofApp::draw(){
 //--------------------------------------------------------------
 void ofApp::drawOpenCv(){
     
+    // Nove all drawings ----------------------------
+    ofPushMatrix();
+    ofTranslate(20, 20);
+    
+    // ---------------------------------------------
     // draw the incoming, the grayscale, the bg and the thresholded difference
     ofSetHexColor(0xffffff);
     switch (m_pSource) {
         case 0:
-            colorImg.draw(20,20,m_pDrawWidth, m_pDrawHeight);
-            break;
         case 1:
+            colorImg.draw(0, 0, m_pDrawWidth, m_pDrawHeight);
+            ofDrawBitmapString("colorImg", 0.5*m_pDrawWidth, 0.5*m_pDrawWidth);
+            break;
             // Draw movie here
-            break;
+            //break;
         case 2:
-            kinect.drawDepth(20, 20, m_pDrawWidth, m_pDrawHeight);
+            kinect.drawDepth(0, 0, m_pDrawWidth, m_pDrawHeight);
+            ofDrawBitmapString("kinectDepth", 0.5*m_pDrawWidth, 0.5*m_pDrawWidth);
             break;
-            
         default:
             break;
     }
-    grayImage.draw(360,20,m_pDrawWidth, m_pDrawHeight);
-    grayBg.draw(20,280,m_pDrawWidth, m_pDrawHeight);
-    grayDiff.draw(360,280,m_pDrawWidth, m_pDrawHeight);
-    //grayToCompute.draw(20, 540);
     
+    // ---------------------------------------------
+    ofPushMatrix();
+    ofTranslate(320, 0);
+    grayImage.draw(0,0,m_pDrawWidth, m_pDrawHeight);
+    ofDrawBitmapString("grayImage", 0.5*m_pDrawWidth, 0.5*m_pDrawWidth);
+    ofPopMatrix();
+    
+    // ---------------------------------------------
+    ofPushMatrix();
+    ofTranslate(0, 240);
+    grayBg.draw(0,0,m_pDrawWidth, m_pDrawHeight);
+    ofDrawBitmapString("grayBg", 0.5*m_pDrawWidth, 0.5*m_pDrawWidth);
+    ofPopMatrix();
+    
+    // ---------------------------------------------
+    ofPushMatrix();
+    ofTranslate(320,240);
+    grayDiff.draw(0,0,m_pDrawWidth, m_pDrawHeight);
+    ofDrawBitmapString("grayDiff", 0.5*m_pDrawWidth, 0.5*m_pDrawWidth);
+    ofPopMatrix();
+    
+    // ---------------------------------------------
+    ofPushMatrix();
+    ofTranslate(0,480);
+    grayThreshNear.draw(0,0,m_pDrawWidth, m_pDrawHeight);
+    ofDrawBitmapString("grayThreshNear", 0.5*m_pDrawWidth, 0.5*m_pDrawWidth);
+    ofPopMatrix();
+    
+    // ---------------------------------------------
+    ofPushMatrix();
+    ofTranslate(320,480);
+    grayThreshFar.draw(0,0,m_pDrawWidth, m_pDrawHeight);
+    ofDrawBitmapString("grayThreshFar", 0.5*m_pDrawWidth, 0.5*m_pDrawWidth);
+    ofPopMatrix();
+    
+    
+    // ---------------------------------------------
     // Draw background of blobs ---
-    
     ofPushStyle();
     ofPushMatrix();
     ofTranslate(700, 20);
@@ -357,7 +408,9 @@ void ofApp::drawOpenCv(){
     }
     ofPopMatrix();
     ofPopStyle();
-
+    // ---------------------------------------------
+    
+    ofPopMatrix();
     
 }
 

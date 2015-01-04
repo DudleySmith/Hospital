@@ -51,6 +51,7 @@ public:
     ofxPanel grabberPanel;
     
     ofParameter<string> m_pAdress;
+    ofParameter<string> m_pMoviePath;
     ofParameter<int>    m_pSource;
     ofParameter<string> m_pSourceDisplay;
     ofParameter<int>    m_pGrabWidth;
@@ -77,7 +78,7 @@ public:
     ofParameter<int>    m_pFarThreshold;
     ofParameter<float>  m_pBrightness;
     ofParameter<float>  m_pContrast;
-    ofParameter<bool>   m_pBlur;
+    ofParameter<float>  m_pBlur;
     ofxButton           m_pSetBg;
     ofxPanel            openCvPanel;
     
@@ -96,6 +97,9 @@ public:
     
     // Kinect --------------------------------------
     ofxKinect kinect;
+    
+    // Movie file -----------------------------------
+    ofVideoPlayer vidPlayer;
     
 };
 

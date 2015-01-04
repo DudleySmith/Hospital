@@ -291,6 +291,9 @@
 		EA6A34721A1FD97B007987B5 /* ofxOscReceiver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscReceiver.h; sourceTree = "<group>"; };
 		EA6A34731A1FD97B007987B5 /* ofxOscSender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscSender.cpp; sourceTree = "<group>"; };
 		EA6A34741A1FD97B007987B5 /* ofxOscSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscSender.h; sourceTree = "<group>"; };
+		EA85997A1A59C9A4002BFDB7 /* grabber.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = grabber.xml; path = bin/data/grabber.xml; sourceTree = "<group>"; };
+		EA85997B1A59C9A4002BFDB7 /* openCv.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = openCv.xml; path = bin/data/openCv.xml; sourceTree = "<group>"; };
+		EA85997C1A59C9A4002BFDB7 /* osc.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = osc.xml; path = bin/data/osc.xml; sourceTree = "<group>"; };
 		EAA59BC71A56CB8D0005DD04 /* APACHE20 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = APACHE20; sourceTree = "<group>"; };
 		EAA59BC81A56CB8D0005DD04 /* CONTRIB */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CONTRIB; sourceTree = "<group>"; };
 		EAA59BC91A56CB8D0005DD04 /* GPL2 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = GPL2; sourceTree = "<group>"; };
@@ -319,8 +322,6 @@
 		EAA59C341A56CB8E0005DD04 /* ofxBase3DVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBase3DVideo.h; sourceTree = "<group>"; };
 		EAA59C351A56CB8E0005DD04 /* ofxKinect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxKinect.cpp; sourceTree = "<group>"; };
 		EAA59C361A56CB8E0005DD04 /* ofxKinect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxKinect.h; sourceTree = "<group>"; };
-		EAA59C4F1A56F3670005DD04 /* grabber.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = grabber.xml; path = bin/data/grabber.xml; sourceTree = "<group>"; };
-		EAA59C501A56F3670005DD04 /* openCv.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = openCv.xml; path = bin/data/openCv.xml; sourceTree = "<group>"; };
 		EBA8BFC368550FBAB0A9C215 /* ofxBluestorkGui.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxBluestorkGui.cpp; path = ../../../addons/ofxBluestorkGrabber/src/ofxBluestorkGui.cpp; sourceTree = SOURCE_ROOT; };
 		ECF8674C7975F1063C5E30CA /* ofxGuiGroup.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxGuiGroup.cpp; path = ../../../addons/ofxGui/src/ofxGuiGroup.cpp; sourceTree = SOURCE_ROOT; };
 		F198996ED5C849097CC1ABB5 /* ofGstVideoGrabber.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofGstVideoGrabber.cpp; path = ../../../libs/openFrameworks/video/ofGstVideoGrabber.cpp; sourceTree = SOURCE_ROOT; };
@@ -495,8 +496,9 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
-				EAA59C4F1A56F3670005DD04 /* grabber.xml */,
-				EAA59C501A56F3670005DD04 /* openCv.xml */,
+				EA85997A1A59C9A4002BFDB7 /* grabber.xml */,
+				EA85997B1A59C9A4002BFDB7 /* openCv.xml */,
+				EA85997C1A59C9A4002BFDB7 /* osc.xml */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
