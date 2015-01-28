@@ -81,6 +81,8 @@ void ofApp::setupPanelOpenCv(){
     openCvPanel.add(m_pBrightness.set("brightness", 0, -1, 1));
     openCvPanel.add(m_pContrast.set("contrast", 0, -1, 1));
     openCvPanel.add(m_pBlur.set("blur", 0, 0, 100));
+    openCvPanel.add(m_pBlobMin.set("blobMin", 0, 0, 1024));
+    openCvPanel.add(m_pBlobMax.set("blobMax", 0, 0, 1024));
     openCvPanel.add(m_pSetBg.setup("Set Background"));
     openCvPanel.add(m_pDraw.setup("Draw", true));
     openCvPanel.loadFromFile("openCv.xml");
@@ -95,7 +97,6 @@ void ofApp::setupOpenCv(){
     grayThreshFar.allocate(m_pGrabWidth,m_pGrabHeight);
     grayBg.allocate(m_pGrabWidth,m_pGrabHeight);
     grayDiff.allocate(m_pGrabWidth,m_pGrabHeight);
-    //grayToCompute.allocate(320, 240);
 }
 
 
@@ -224,8 +225,8 @@ void ofApp::updateOpenCv(){
     
     // find contours which are between the size of 20 pixels and 1/3 the w*h pixels.
     // also, find holes is set to true so we will get interior contours as well....
-    contourFinder.findContours(grayDiff, 20, (340*240)/3, 10, true);	// find holes
-    
+    contourFinder.findContours(grayDiff, m_pBlobMin, m_pBlobMax, 10, true);	// find holes
+
 }
 
 
@@ -266,9 +267,11 @@ ofxOscMessage ofApp::getMessage(int _blobIndex, ofPoint _center, float _radius){
     ofxOscMessage m;
     string prefix = m_pPrefix;
     
-    m.setAddress("/" + prefix + "/blob" + ofToString(_blobIndex, 3, '0'));
-    m.addFloatArg((float)(_center.x)/m_pGrabWidth);
-    m.addFloatArg((float)(_center.y)/m_pGrabHeight);
+    m.setAddress("/" + prefix + "/blobs");
+    
+    m.addStringArg(ofToString(_blobIndex, 4, '0'));
+    m.addFloatArg((float)(_center.x)/(float)m_pGrabWidth);
+    m.addFloatArg((float)(_center.y)/(float)m_pGrabHeight);
     m.addFloatArg(_radius);
     
     return m;
@@ -389,13 +392,21 @@ void ofApp::drawOpenCv(){
     // Draw background of blobs ---
     ofPushStyle();
     ofPushMatrix();
-    ofTranslate(700, 20);
+    ofTranslate(650, 0);
     
     ofPushStyle();
     ofFill();
     ofSetColor(ofColor::darkGrey);
-    ofRect(0, 0,320,240);
+    ofRect(0, 0,m_pDrawWidth,m_pDrawHeight);
     ofPopStyle();
+    
+    ofPushMatrix();
+    float xScale = (float)m_pDrawWidth/m_pGrabWidth;
+    float yScale = (float)m_pDrawHeight/m_pGrabHeight;
+    
+    //ofLogVerbose() << "Scale : " << ofToString(xScale) << ":" << ofToString(yScale);
+    
+    ofScale(xScale, yScale);
     
     ofNoFill();
     ofSetColor(ofColor::white);
@@ -406,6 +417,8 @@ void ofApp::drawOpenCv(){
         float radius = sqrt(contourFinder.blobs[i].area/PI);
         ofCircle(center, radius);
     }
+    
+    ofPopMatrix();
     ofPopMatrix();
     ofPopStyle();
     // ---------------------------------------------

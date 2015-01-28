@@ -292,7 +292,6 @@
 		EA6A34731A1FD97B007987B5 /* ofxOscSender.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxOscSender.cpp; sourceTree = "<group>"; };
 		EA6A34741A1FD97B007987B5 /* ofxOscSender.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxOscSender.h; sourceTree = "<group>"; };
 		EA85997A1A59C9A4002BFDB7 /* grabber.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = grabber.xml; path = bin/data/grabber.xml; sourceTree = "<group>"; };
-		EA85997B1A59C9A4002BFDB7 /* openCv.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = openCv.xml; path = bin/data/openCv.xml; sourceTree = "<group>"; };
 		EA85997C1A59C9A4002BFDB7 /* osc.xml */ = {isa = PBXFileReference; lastKnownFileType = text.xml; name = osc.xml; path = bin/data/osc.xml; sourceTree = "<group>"; };
 		EAA59BC71A56CB8D0005DD04 /* APACHE20 */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = APACHE20; sourceTree = "<group>"; };
 		EAA59BC81A56CB8D0005DD04 /* CONTRIB */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = CONTRIB; sourceTree = "<group>"; };
@@ -497,7 +496,6 @@
 			isa = PBXGroup;
 			children = (
 				EA85997A1A59C9A4002BFDB7 /* grabber.xml */,
-				EA85997B1A59C9A4002BFDB7 /* openCv.xml */,
 				EA85997C1A59C9A4002BFDB7 /* osc.xml */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,

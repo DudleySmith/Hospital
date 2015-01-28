@@ -1,10 +1,10 @@
 <grabber>
 	<source>1</source>
 	<sourceDisplay>movie file</sourceDisplay>
-	<moviePath>fingers.mov</moviePath>
+	<moviePath>MocBallsTracking.mov</moviePath>
 	<adress>192.168.3.101</adress>
-	<grabWidth>320</grabWidth>
-	<grabHeight>240</grabHeight>
+	<grabWidth>640</grabWidth>
+	<grabHeight>480</grabHeight>
 	<drawWidth>320</drawWidth>
 	<drawHeight>240</drawHeight>
 </grabber>

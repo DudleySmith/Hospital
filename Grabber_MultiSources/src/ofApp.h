@@ -79,6 +79,8 @@ public:
     ofParameter<float>  m_pBrightness;
     ofParameter<float>  m_pContrast;
     ofParameter<float>  m_pBlur;
+    ofParameter<int>    m_pBlobMin;
+    ofParameter<int>    m_pBlobMax;
     ofxButton           m_pSetBg;
     ofxPanel            openCvPanel;
     

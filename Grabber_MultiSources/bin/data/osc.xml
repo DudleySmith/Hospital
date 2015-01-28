@@ -2,6 +2,6 @@
 	<ready>0</ready>
 	<send>1</send>
 	<host>127.0.0.1</host>
-	<port>9001</port>
+	<port>1551</port>
 	<prefix>cam1</prefix>
 </osc>
