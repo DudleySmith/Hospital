@@ -1,10 +1,15 @@
 #pragma once
 
 #include "ofMain.h"
-#include "ofxBluestorkGrabber.h"
+
 #include "ofxGui.h"
+
+#include "ofxBluestorkGrabber.h"
 #include "ofxOpenCv.h"
+#include "ofxCv.h"
+
 #include "ofxOsc.h"
+
 #include "ofxKinect.h"
 
 class ofApp : public ofBaseApp{
@@ -70,7 +75,8 @@ public:
     ofxCvGrayscaleImage     grayThreshNear; // the near thresholded image
     ofxCvGrayscaleImage     grayThreshFar; // the far thresholded image
     
-    ofxCvContourFinder 	contourFinder;
+    //ofxCvContourFinder 	contourFinder;
+    ofxCv::ContourFinder    contourFinder;
     
     ofParameter<bool>   m_pTwoThreshold;
     ofParameter<int>    m_pThreshold;
@@ -79,10 +85,17 @@ public:
     ofParameter<float>  m_pBrightness;
     ofParameter<float>  m_pContrast;
     ofParameter<float>  m_pBlur;
-    ofParameter<int>    m_pBlobMin;
-    ofParameter<int>    m_pBlobMax;
+    ofParameter<float>  m_pResultBrightness;
+    ofParameter<float>  m_pResultContrast;
     ofxButton           m_pSetBg;
+    ofxToggle           m_pShowLabels;
     ofxPanel            openCvPanel;
+    
+    
+    ofParameter<float>    m_pMinArea;
+    ofParameter<float>    m_pMaxArea;
+    ofParameter<float>    m_pPersistence;
+    ofParameter<float>    m_pMaxDistance;
     
     // OSC -----------------------------------------
     ofxOscSender        oscSender;
@@ -94,9 +107,15 @@ public:
     ofParameter<string>     m_pHost;
     ofParameter<int>        m_pPort;
     ofParameter<string>     m_pPrefix;
+    ofParameter<int>        m_pIdxCam;
+    ofParameter<bool>       m_pRandomId;
+    ofParameter<string>     m_pIdSent;
+    ofParameter<bool>       m_pRevertX;
+    ofParameter<bool>       m_pRevertY;
     
     ofxOscMessage getMessage(int _blobIndex, ofPoint _center, float _radius);
     
+
     // Kinect --------------------------------------
     ofxKinect kinect;
     

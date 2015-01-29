@@ -74,19 +74,28 @@ void ofApp::setupPanelOpenCv(){
     m_pSetBg.addListener(this,&ofApp::setBgPressed);
     
     openCvPanel.setup("openCv", "openCv.xml");
+    openCvPanel.add(m_pMinArea.set("minArea", 1, 0, 255));
+    openCvPanel.add(m_pMaxArea.set("maxArea", 100, 0, 255));
     openCvPanel.add(m_pTwoThreshold.set("twoThreshold", true));
     openCvPanel.add(m_pThreshold.set("threshold", 80, 0, 255));
     openCvPanel.add(m_pNearThreshold.set("nearThreshold", 80, 0, 255));
     openCvPanel.add(m_pFarThreshold.set("farRhreshold", 80, 0, 255));
+    openCvPanel.add(m_pPersistence.set("persistence", 15, 0, 255));
+    openCvPanel.add(m_pMaxDistance.set("maxDistance", 32, 0, 255));
+    
     openCvPanel.add(m_pBrightness.set("brightness", 0, -1, 1));
     openCvPanel.add(m_pContrast.set("contrast", 0, -1, 1));
-    openCvPanel.add(m_pBlur.set("blur", 0, 0, 100));
-    openCvPanel.add(m_pBlobMin.set("blobMin", 0, 0, 1024));
-    openCvPanel.add(m_pBlobMax.set("blobMax", 0, 0, 1024));
+    openCvPanel.add(m_pBlur.set("blur", false));
+    openCvPanel.add(m_pResultBrightness.set("ResultBrightness", 0, -1, 1));
+    openCvPanel.add(m_pResultContrast.set("ResultContrast", 0, -1, 1));
+    
     openCvPanel.add(m_pSetBg.setup("Set Background"));
     openCvPanel.add(m_pDraw.setup("Draw", true));
+    openCvPanel.add(m_pShowLabels.setup("labels", true));
+    
     openCvPanel.loadFromFile("openCv.xml");
     openCvPanel.setPosition(500, 550);
+    
 }
 
 //--------------------------------------------------------------
@@ -199,6 +208,17 @@ void ofApp::updateKinect(){
 //--------------------------------------------------------------
 void ofApp::updateOpenCv(){
     
+    contourFinder.setMinAreaRadius(m_pMinArea);
+    contourFinder.setMaxAreaRadius(m_pMaxArea);
+    contourFinder.setThreshold(m_pThreshold);
+    // wait for half a frame before forgetting something
+    contourFinder.getTracker().setPersistence(m_pPersistence);
+    // an object can move up to 32 pixels per frame
+    contourFinder.getTracker().setMaximumDistance(m_pMaxDistance);
+    
+    //colorImg.setFromPixels(grabber.getPixels(), 320,240);
+    grayImage = colorImg;
+    
     grayImage.brightnessContrast(m_pBrightness, m_pContrast);
     
     // take the abs value of the difference between background and incoming and then threshold:
@@ -220,12 +240,11 @@ void ofApp::updateOpenCv(){
         //grayDiff.blurHeavily();
         grayDiff.blurGaussian(m_pBlur);
     }
-    
-    
+    grayDiff.brightnessContrast(m_pResultBrightness, m_pResultContrast);
     
     // find contours which are between the size of 20 pixels and 1/3 the w*h pixels.
     // also, find holes is set to true so we will get interior contours as well....
-    contourFinder.findContours(grayDiff, m_pBlobMin, m_pBlobMax, 10, true);	// find holes
+    contourFinder.findContours(grayDiff);	// find holes
 
 }
 
@@ -233,17 +252,20 @@ void ofApp::updateOpenCv(){
 //--------------------------------------------------------------
 void ofApp::updateOsc(){
     
+    //if (reportOsc.length() > 1000) {
+    reportOsc = "";
+    //}
     
-    if (reportOsc.length() > 1000) {
-        reportOsc = "";
-    }
-
-   for (int i = 0; i < contourFinder.nBlobs; i++){
+    for(int i = 0; i < contourFinder.size(); i++) {
         
-        ofPoint center = contourFinder.blobs[i].boundingRect.getCenter();
-        float radius = sqrt(contourFinder.blobs[i].area/PI);
+        if(m_pRandomId==true){
+            m_pIdxCam = 1 + contourFinder.getLabel(i)%3;
+        }
         
-        ofxOscMessage m = getMessage(i, center, radius);
+        ofPoint center = ofxCv::toOf(contourFinder.getCenter(i));
+        float radius = sqrt(contourFinder.getContourArea(i)/PI);
+        
+        ofxOscMessage m = getMessage(contourFinder.getLabel(i), center, radius);
         oscSender.sendMessage(m);
         
         string message = "Message Osc : " + m.getAddress() + ":" ;
@@ -257,7 +279,6 @@ void ofApp::updateOsc(){
         ofLogVerbose() << message;
         
     }
-    
     
 }
 
@@ -316,7 +337,7 @@ void ofApp::draw(){
     
     reportStr << "bg subtraction and blob detection" << endl
     << "threshold " << m_pThreshold << endl
-    << "num blobs found " << contourFinder.nBlobs << endl
+    << "num blobs found " << contourFinder.size() << endl
     << "fps: " << ofGetFrameRate();
     
     ofDrawBitmapString(reportStr.str(), 750, 360);
@@ -390,6 +411,9 @@ void ofApp::drawOpenCv(){
     
     // ---------------------------------------------
     // Draw background of blobs ---
+    
+    ofxCv::RectTracker& tracker = contourFinder.getTracker();
+    
     ofPushStyle();
     ofPushMatrix();
     ofTranslate(650, 0);
@@ -410,12 +434,77 @@ void ofApp::drawOpenCv(){
     
     ofNoFill();
     ofSetColor(ofColor::white);
-    ofSetLineWidth(2);
+    ofSetLineWidth(1);
     
-    for (int i = 0; i < contourFinder.nBlobs; i++){
-        ofPoint center = contourFinder.blobs[i].boundingRect.getCenter();
-        float radius = sqrt(contourFinder.blobs[i].area/PI);
-        ofCircle(center, radius);
+    if(m_pShowLabels) {
+        ofSetColor(255);
+        //movie.draw(0, 0);
+        contourFinder.draw();
+        for(int i = 0; i < contourFinder.size(); i++) {
+            ofPoint center = ofxCv::toOf(contourFinder.getCenter(i));
+            
+            ofPushMatrix();
+            ofTranslate(center.x, center.y);
+            
+            int label = contourFinder.getLabel(i);
+            string msg = ofToString(label) + ":" + ofToString(tracker.getAge(label));
+            ofDrawBitmapString(msg, 0, 0);
+            
+            float radius = sqrt(contourFinder.getContourArea(i)/PI);
+            ofCircle(0, 0, radius);
+            
+            ofPushMatrix();
+            ofVec2f velocity = ofxCv::toOf(contourFinder.getVelocity(i));
+            ofScale(5, 5);
+            ofLine(0, 0, velocity.x, velocity.y);
+            ofPopMatrix();
+            
+            ofPopMatrix();
+            
+        }
+    } else {
+        for(int i = 0; i < contourFinder.size(); i++) {
+            unsigned int label = contourFinder.getLabel(i);
+            // only draw a line if this is not a new label
+            if(tracker.existsPrevious(label)) {
+                // use the label to pick a random color
+                ofSeedRandom(label << 24);
+                ofSetColor(ofColor::fromHsb(ofRandom(255), 255, 255));
+                // get the tracked object (cv::Rect) at current and previous position
+                const cv::Rect& previous = tracker.getPrevious(label);
+                const cv::Rect& current = tracker.getCurrent(label);
+                // get the centers of the rectangles
+                ofVec2f previousPosition(previous.x + previous.width / 2, previous.y + previous.height / 2);
+                ofVec2f currentPosition(current.x + current.width / 2, current.y + current.height / 2);
+                ofLine(previousPosition, currentPosition);
+            }
+        }
+    }
+    
+    // this chunk of code visualizes the creation and destruction of labels
+    const vector<unsigned int>& currentLabels = tracker.getCurrentLabels();
+    const vector<unsigned int>& previousLabels = tracker.getPreviousLabels();
+    const vector<unsigned int>& newLabels = tracker.getNewLabels();
+    const vector<unsigned int>& deadLabels = tracker.getDeadLabels();
+    ofSetColor(ofxCv::cyanPrint);
+    for(int i = 0; i < currentLabels.size(); i++) {
+        int j = currentLabels[i];
+        ofLine(j, 0, j, 4);
+    }
+    ofSetColor(ofxCv::magentaPrint);
+    for(int i = 0; i < previousLabels.size(); i++) {
+        int j = previousLabels[i];
+        ofLine(j, 4, j, 8);
+    }
+    ofSetColor(ofxCv::yellowPrint);
+    for(int i = 0; i < newLabels.size(); i++) {
+        int j = newLabels[i];
+        ofLine(j, 8, j, 12);
+    }
+    ofSetColor(ofColor::white);
+    for(int i = 0; i < deadLabels.size(); i++) {
+        int j = deadLabels[i];
+        ofLine(j, 12, j, 16);
     }
     
     ofPopMatrix();

@@ -37,6 +37,21 @@
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
+		EA1BB8791A7AA03300E7B844 /* ETF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1BB85D1A7AA03300E7B844 /* ETF.cpp */; };
+		EA1BB87A1A7AA03300E7B844 /* fdog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1BB85E1A7AA03300E7B844 /* fdog.cpp */; };
+		EA1BB87B1A7AA03300E7B844 /* Calibration.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1BB86E1A7AA03300E7B844 /* Calibration.cpp */; };
+		EA1BB87C1A7AA03300E7B844 /* ContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1BB86F1A7AA03300E7B844 /* ContourFinder.cpp */; };
+		EA1BB87D1A7AA03300E7B844 /* Distance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1BB8701A7AA03300E7B844 /* Distance.cpp */; };
+		EA1BB87E1A7AA03300E7B844 /* Flow.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1BB8711A7AA03300E7B844 /* Flow.cpp */; };
+		EA1BB87F1A7AA03300E7B844 /* Helpers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1BB8721A7AA03300E7B844 /* Helpers.cpp */; };
+		EA1BB8801A7AA03300E7B844 /* Kalman.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1BB8731A7AA03300E7B844 /* Kalman.cpp */; };
+		EA1BB8811A7AA03300E7B844 /* ObjectFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1BB8741A7AA03300E7B844 /* ObjectFinder.cpp */; };
+		EA1BB8821A7AA03300E7B844 /* RunningBackground.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1BB8751A7AA03300E7B844 /* RunningBackground.cpp */; };
+		EA1BB8831A7AA03300E7B844 /* Tracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1BB8761A7AA03300E7B844 /* Tracker.cpp */; };
+		EA1BB8841A7AA03300E7B844 /* Utilities.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1BB8771A7AA03300E7B844 /* Utilities.cpp */; };
+		EA1BB8851A7AA03300E7B844 /* Wrappers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1BB8781A7AA03300E7B844 /* Wrappers.cpp */; };
+		EA1BB8901A7AA03C00E7B844 /* ETF.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1BB88E1A7AA03C00E7B844 /* ETF.cpp */; };
+		EA1BB8911A7AA03C00E7B844 /* fdog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA1BB88F1A7AA03C00E7B844 /* fdog.cpp */; };
 		EA6A34021A1FA716007987B5 /* opencv.a in Frameworks */ = {isa = PBXBuildFile; fileRef = EA6A33EF1A1FA716007987B5 /* opencv.a */; };
 		EA6A34031A1FA716007987B5 /* ofxCvColorImage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6A33F21A1FA716007987B5 /* ofxCvColorImage.cpp */; };
 		EA6A34041A1FA716007987B5 /* ofxCvContourFinder.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA6A33F51A1FA716007987B5 /* ofxCvContourFinder.cpp */; };
@@ -156,6 +171,44 @@
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
+		EA1BB8521A7AA02300E7B844 /* ofxCv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxCv.h; sourceTree = "<group>"; };
+		EA1BB8541A7AA03300E7B844 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
+		EA1BB8581A7AA03300E7B844 /* ETF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETF.h; sourceTree = "<group>"; };
+		EA1BB8591A7AA03300E7B844 /* fdog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fdog.h; sourceTree = "<group>"; };
+		EA1BB85A1A7AA03300E7B844 /* imatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imatrix.h; sourceTree = "<group>"; };
+		EA1BB85B1A7AA03300E7B844 /* myvec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myvec.h; sourceTree = "<group>"; };
+		EA1BB85D1A7AA03300E7B844 /* ETF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ETF.cpp; sourceTree = "<group>"; };
+		EA1BB85E1A7AA03300E7B844 /* fdog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fdog.cpp; sourceTree = "<group>"; };
+		EA1BB8621A7AA03300E7B844 /* Calibration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Calibration.h; sourceTree = "<group>"; };
+		EA1BB8631A7AA03300E7B844 /* ContourFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ContourFinder.h; sourceTree = "<group>"; };
+		EA1BB8641A7AA03300E7B844 /* Distance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Distance.h; sourceTree = "<group>"; };
+		EA1BB8651A7AA03300E7B844 /* Flow.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Flow.h; sourceTree = "<group>"; };
+		EA1BB8661A7AA03300E7B844 /* Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Helpers.h; sourceTree = "<group>"; };
+		EA1BB8671A7AA03300E7B844 /* Kalman.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Kalman.h; sourceTree = "<group>"; };
+		EA1BB8681A7AA03300E7B844 /* ObjectFinder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjectFinder.h; sourceTree = "<group>"; };
+		EA1BB8691A7AA03300E7B844 /* RunningBackground.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RunningBackground.h; sourceTree = "<group>"; };
+		EA1BB86A1A7AA03300E7B844 /* Tracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tracker.h; sourceTree = "<group>"; };
+		EA1BB86B1A7AA03300E7B844 /* Utilities.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utilities.h; sourceTree = "<group>"; };
+		EA1BB86C1A7AA03300E7B844 /* Wrappers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Wrappers.h; sourceTree = "<group>"; };
+		EA1BB86E1A7AA03300E7B844 /* Calibration.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Calibration.cpp; sourceTree = "<group>"; };
+		EA1BB86F1A7AA03300E7B844 /* ContourFinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ContourFinder.cpp; sourceTree = "<group>"; };
+		EA1BB8701A7AA03300E7B844 /* Distance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Distance.cpp; sourceTree = "<group>"; };
+		EA1BB8711A7AA03300E7B844 /* Flow.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Flow.cpp; sourceTree = "<group>"; };
+		EA1BB8721A7AA03300E7B844 /* Helpers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Helpers.cpp; sourceTree = "<group>"; };
+		EA1BB8731A7AA03300E7B844 /* Kalman.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Kalman.cpp; sourceTree = "<group>"; };
+		EA1BB8741A7AA03300E7B844 /* ObjectFinder.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObjectFinder.cpp; sourceTree = "<group>"; };
+		EA1BB8751A7AA03300E7B844 /* RunningBackground.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RunningBackground.cpp; sourceTree = "<group>"; };
+		EA1BB8761A7AA03300E7B844 /* Tracker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tracker.cpp; sourceTree = "<group>"; };
+		EA1BB8771A7AA03300E7B844 /* Utilities.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Utilities.cpp; sourceTree = "<group>"; };
+		EA1BB8781A7AA03300E7B844 /* Wrappers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Wrappers.cpp; sourceTree = "<group>"; };
+		EA1BB8891A7AA03C00E7B844 /* ETF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ETF.h; sourceTree = "<group>"; };
+		EA1BB88A1A7AA03C00E7B844 /* fdog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = fdog.h; sourceTree = "<group>"; };
+		EA1BB88B1A7AA03C00E7B844 /* imatrix.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = imatrix.h; sourceTree = "<group>"; };
+		EA1BB88C1A7AA03C00E7B844 /* myvec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = myvec.h; sourceTree = "<group>"; };
+		EA1BB88E1A7AA03C00E7B844 /* ETF.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ETF.cpp; sourceTree = "<group>"; };
+		EA1BB88F1A7AA03C00E7B844 /* fdog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = fdog.cpp; sourceTree = "<group>"; };
+		EA1BB8921A7AA05100E7B844 /* license.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = license.md; path = ../../../addons/ofxCv/license.md; sourceTree = "<group>"; };
+		EA1BB8931A7AA05900E7B844 /* readme.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; name = readme.md; path = ../../../addons/ofxCv/readme.md; sourceTree = "<group>"; };
 		EA6A33881A1FA716007987B5 /* addon_config.mk */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = addon_config.mk; sourceTree = "<group>"; };
 		EA6A338D1A1FA716007987B5 /* cv.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = cv.h; sourceTree = "<group>"; };
 		EA6A338E1A1FA716007987B5 /* cv.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; path = cv.hpp; sourceTree = "<group>"; };
@@ -425,6 +478,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				EA1BB8501A7AA01100E7B844 /* ofxCvAddon */,
 				EAA59BC41A56CB7B0005DD04 /* ofxKinect */,
 				EA6A344A1A1FD97B007987B5 /* ofxOsc */,
 				EA6A33871A1FA716007987B5 /* ofxOpenCv */,
@@ -532,6 +586,166 @@
 				D4E158D6520B43F33443B183 /* src */,
 			);
 			name = ofxHttpUtils;
+			sourceTree = "<group>";
+		};
+		EA1BB8501A7AA01100E7B844 /* ofxCvAddon */ = {
+			isa = PBXGroup;
+			children = (
+				EA1BB8931A7AA05900E7B844 /* readme.md */,
+				EA1BB8921A7AA05100E7B844 /* license.md */,
+				EA1BB8861A7AA03C00E7B844 /* CLD */,
+				EA1BB8531A7AA03300E7B844 /* libs */,
+				EA1BB8511A7AA02300E7B844 /* src */,
+			);
+			name = ofxCvAddon;
+			sourceTree = "<group>";
+		};
+		EA1BB8511A7AA02300E7B844 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				EA1BB8521A7AA02300E7B844 /* ofxCv.h */,
+			);
+			name = src;
+			path = ../../../addons/ofxCv/src;
+			sourceTree = "<group>";
+		};
+		EA1BB8531A7AA03300E7B844 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+				EA1BB8541A7AA03300E7B844 /* .gitignore */,
+				EA1BB8551A7AA03300E7B844 /* CLD */,
+				EA1BB85F1A7AA03300E7B844 /* ofxCv */,
+			);
+			name = libs;
+			path = ../../../addons/ofxCv/libs;
+			sourceTree = "<group>";
+		};
+		EA1BB8551A7AA03300E7B844 /* CLD */ = {
+			isa = PBXGroup;
+			children = (
+				EA1BB8561A7AA03300E7B844 /* include */,
+				EA1BB85C1A7AA03300E7B844 /* src */,
+			);
+			path = CLD;
+			sourceTree = "<group>";
+		};
+		EA1BB8561A7AA03300E7B844 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				EA1BB8571A7AA03300E7B844 /* CLD */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		EA1BB8571A7AA03300E7B844 /* CLD */ = {
+			isa = PBXGroup;
+			children = (
+				EA1BB8581A7AA03300E7B844 /* ETF.h */,
+				EA1BB8591A7AA03300E7B844 /* fdog.h */,
+				EA1BB85A1A7AA03300E7B844 /* imatrix.h */,
+				EA1BB85B1A7AA03300E7B844 /* myvec.h */,
+			);
+			path = CLD;
+			sourceTree = "<group>";
+		};
+		EA1BB85C1A7AA03300E7B844 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				EA1BB85D1A7AA03300E7B844 /* ETF.cpp */,
+				EA1BB85E1A7AA03300E7B844 /* fdog.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		EA1BB85F1A7AA03300E7B844 /* ofxCv */ = {
+			isa = PBXGroup;
+			children = (
+				EA1BB8601A7AA03300E7B844 /* include */,
+				EA1BB86D1A7AA03300E7B844 /* src */,
+			);
+			path = ofxCv;
+			sourceTree = "<group>";
+		};
+		EA1BB8601A7AA03300E7B844 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				EA1BB8611A7AA03300E7B844 /* ofxCv */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		EA1BB8611A7AA03300E7B844 /* ofxCv */ = {
+			isa = PBXGroup;
+			children = (
+				EA1BB8621A7AA03300E7B844 /* Calibration.h */,
+				EA1BB8631A7AA03300E7B844 /* ContourFinder.h */,
+				EA1BB8641A7AA03300E7B844 /* Distance.h */,
+				EA1BB8651A7AA03300E7B844 /* Flow.h */,
+				EA1BB8661A7AA03300E7B844 /* Helpers.h */,
+				EA1BB8671A7AA03300E7B844 /* Kalman.h */,
+				EA1BB8681A7AA03300E7B844 /* ObjectFinder.h */,
+				EA1BB8691A7AA03300E7B844 /* RunningBackground.h */,
+				EA1BB86A1A7AA03300E7B844 /* Tracker.h */,
+				EA1BB86B1A7AA03300E7B844 /* Utilities.h */,
+				EA1BB86C1A7AA03300E7B844 /* Wrappers.h */,
+			);
+			path = ofxCv;
+			sourceTree = "<group>";
+		};
+		EA1BB86D1A7AA03300E7B844 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				EA1BB86E1A7AA03300E7B844 /* Calibration.cpp */,
+				EA1BB86F1A7AA03300E7B844 /* ContourFinder.cpp */,
+				EA1BB8701A7AA03300E7B844 /* Distance.cpp */,
+				EA1BB8711A7AA03300E7B844 /* Flow.cpp */,
+				EA1BB8721A7AA03300E7B844 /* Helpers.cpp */,
+				EA1BB8731A7AA03300E7B844 /* Kalman.cpp */,
+				EA1BB8741A7AA03300E7B844 /* ObjectFinder.cpp */,
+				EA1BB8751A7AA03300E7B844 /* RunningBackground.cpp */,
+				EA1BB8761A7AA03300E7B844 /* Tracker.cpp */,
+				EA1BB8771A7AA03300E7B844 /* Utilities.cpp */,
+				EA1BB8781A7AA03300E7B844 /* Wrappers.cpp */,
+			);
+			path = src;
+			sourceTree = "<group>";
+		};
+		EA1BB8861A7AA03C00E7B844 /* CLD */ = {
+			isa = PBXGroup;
+			children = (
+				EA1BB8871A7AA03C00E7B844 /* include */,
+				EA1BB88D1A7AA03C00E7B844 /* src */,
+			);
+			name = CLD;
+			path = ../../../addons/ofxCv/libs/CLD;
+			sourceTree = "<group>";
+		};
+		EA1BB8871A7AA03C00E7B844 /* include */ = {
+			isa = PBXGroup;
+			children = (
+				EA1BB8881A7AA03C00E7B844 /* CLD */,
+			);
+			path = include;
+			sourceTree = "<group>";
+		};
+		EA1BB8881A7AA03C00E7B844 /* CLD */ = {
+			isa = PBXGroup;
+			children = (
+				EA1BB8891A7AA03C00E7B844 /* ETF.h */,
+				EA1BB88A1A7AA03C00E7B844 /* fdog.h */,
+				EA1BB88B1A7AA03C00E7B844 /* imatrix.h */,
+				EA1BB88C1A7AA03C00E7B844 /* myvec.h */,
+			);
+			path = CLD;
+			sourceTree = "<group>";
+		};
+		EA1BB88D1A7AA03C00E7B844 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				EA1BB88E1A7AA03C00E7B844 /* ETF.cpp */,
+				EA1BB88F1A7AA03C00E7B844 /* fdog.cpp */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		EA6A33871A1FA716007987B5 /* ofxOpenCv */ = {
@@ -1113,23 +1327,32 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA1BB87B1A7AA03300E7B844 /* Calibration.cpp in Sources */,
 				EAA59C3D1A56CB8E0005DD04 /* keep_alive.c in Sources */,
+				EA1BB8791A7AA03300E7B844 /* ETF.cpp in Sources */,
 				EA6A347D1A1FD97B007987B5 /* OscTypes.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				EAA59C391A56CB8E0005DD04 /* audio.c in Sources */,
 				EAA59C401A56CB8E0005DD04 /* tilt.c in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				EA6A347F1A1FD97B007987B5 /* ofxOscMessage.cpp in Sources */,
+				EA1BB8851A7AA03300E7B844 /* Wrappers.cpp in Sources */,
+				EA1BB87A1A7AA03300E7B844 /* fdog.cpp in Sources */,
+				EA1BB8801A7AA03300E7B844 /* Kalman.cpp in Sources */,
 				EAA59C441A56CB8E0005DD04 /* ofxKinect.cpp in Sources */,
 				856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */,
 				EAA59C3E1A56CB8E0005DD04 /* loader.c in Sources */,
 				EA6A34051A1FA716007987B5 /* ofxCvFloatImage.cpp in Sources */,
+				EA1BB8841A7AA03300E7B844 /* Utilities.cpp in Sources */,
 				EAA59C411A56CB8E0005DD04 /* usb_libusb10.c in Sources */,
+				EA1BB8901A7AA03C00E7B844 /* ETF.cpp in Sources */,
 				EA6A34821A1FD97B007987B5 /* ofxOscSender.cpp in Sources */,
 				5CBB2AB3A60F65431D7B555D /* ofxButton.cpp in Sources */,
 				B266578FC55D23BFEBC042E7 /* ofxGuiGroup.cpp in Sources */,
 				483908258D00B98B4BE69F07 /* ofxLabel.cpp in Sources */,
 				EA6A34761A1FD97B007987B5 /* NetworkingUtils.cpp in Sources */,
+				EA1BB87C1A7AA03300E7B844 /* ContourFinder.cpp in Sources */,
+				EA1BB8911A7AA03C00E7B844 /* fdog.cpp in Sources */,
 				F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */,
 				837220E80EB56CD44AD27F2A /* ofxSlider.cpp in Sources */,
 				EA6A34801A1FD97B007987B5 /* ofxOscParameterSync.cpp in Sources */,
@@ -1140,6 +1363,7 @@
 				EAA59C3F1A56CB8E0005DD04 /* registration.c in Sources */,
 				A9A74747299F133C723957FA /* ofxBluestorkGrabber.cpp in Sources */,
 				D6B879C430A21D1A7AF3D184 /* ofxBluestorkGui.cpp in Sources */,
+				EA1BB87F1A7AA03300E7B844 /* Helpers.cpp in Sources */,
 				EA6A34811A1FD97B007987B5 /* ofxOscReceiver.cpp in Sources */,
 				EAA59C3B1A56CB8E0005DD04 /* core.c in Sources */,
 				EAA59C3C1A56CB8E0005DD04 /* flags.c in Sources */,
@@ -1149,7 +1373,9 @@
 				EA6A34081A1FA716007987B5 /* ofxCvImage.cpp in Sources */,
 				EA6A34781A1FD97B007987B5 /* NetworkingUtilsWin.cpp in Sources */,
 				EA6B03BE577F2E744640A557 /* ofGstVideoPlayer.cpp in Sources */,
+				EA1BB8811A7AA03300E7B844 /* ObjectFinder.cpp in Sources */,
 				EA6A34061A1FA716007987B5 /* ofxCvGrayscaleImage.cpp in Sources */,
+				EA1BB8831A7AA03300E7B844 /* Tracker.cpp in Sources */,
 				EA6A34031A1FA716007987B5 /* ofxCvColorImage.cpp in Sources */,
 				EA6A347B1A1FD97B007987B5 /* OscPrintReceivedElements.cpp in Sources */,
 				9D99424B122DE3C1D83A3670 /* ofGstVideoGrabber.cpp in Sources */,
@@ -1158,10 +1384,13 @@
 				F19063B0EC4D063E8E2588EC /* ofxGStreamer.cpp in Sources */,
 				EA6A34751A1FD97B007987B5 /* IpEndpointName.cpp in Sources */,
 				EA6A34791A1FD97B007987B5 /* UdpSocketWin.cpp in Sources */,
+				EA1BB87E1A7AA03300E7B844 /* Flow.cpp in Sources */,
 				EAA59C431A56CB8E0005DD04 /* ofxKinectExtras.cpp in Sources */,
 				EA6A347A1A1FD97B007987B5 /* OscOutboundPacketStream.cpp in Sources */,
 				EA6A34771A1FD97B007987B5 /* UdpSocket.cpp in Sources */,
+				EA1BB87D1A7AA03300E7B844 /* Distance.cpp in Sources */,
 				0BE560265BD00F873BAB201D /* ofxHttpUtils.cpp in Sources */,
+				EA1BB8821A7AA03300E7B844 /* RunningBackground.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1227,6 +1456,16 @@
 					"../../../addons/ofxKinect/libs/libusb-win32",
 					../../../addons/ofxKinect/src,
 					../../../addons/ofxKinect/src/extra,
+					"../../../addons/ofxCv/src/**",
+					"../../../addons/ofxCv/libs/**",
+					"../../../addons/ofxCv/libs/ofxCv/**",
+					"../../../addons/ofxCv/libs/CLD/**",
+					../../../addons/ofxCv/libs/CLD/src,
+					../../../addons/ofxCv/libs/CLD/include,
+					../../../addons/ofxCv/libs/CLD/include/CLD,
+					../../../addons/ofxCv/libs/ofxCv/include,
+					../../../addons/ofxCv/libs/ofxCv/include/ofxCv,
+					../../../addons/ofxCv/libs/ofxCv/include/src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1298,6 +1537,16 @@
 					"../../../addons/ofxKinect/libs/libusb-win32",
 					../../../addons/ofxKinect/src,
 					../../../addons/ofxKinect/src/extra,
+					"../../../addons/ofxCv/src/**",
+					"../../../addons/ofxCv/libs/**",
+					"../../../addons/ofxCv/libs/ofxCv/**",
+					"../../../addons/ofxCv/libs/CLD/**",
+					../../../addons/ofxCv/libs/CLD/src,
+					../../../addons/ofxCv/libs/CLD/include,
+					../../../addons/ofxCv/libs/CLD/include/CLD,
+					../../../addons/ofxCv/libs/ofxCv/include,
+					../../../addons/ofxCv/libs/ofxCv/include/ofxCv,
+					../../../addons/ofxCv/libs/ofxCv/include/src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
 				OTHER_CPLUSPLUSFLAGS = (
@@ -1373,6 +1622,7 @@
 					../../../addons/ofxOpenCv/libs/opencv/lib/linuxarmv7l,
 					../../../addons/ofxOpenCv/libs/opencv/lib/osx,
 					../../../addons/ofxOpenCv/src,
+					"../../../addons/ofxCv/**",
 				);
 				ICON = "$(ICON_NAME_DEBUG)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
@@ -1504,6 +1754,7 @@
 					../../../addons/ofxOpenCv/libs/opencv/lib/linuxarmv7l,
 					../../../addons/ofxOpenCv/libs/opencv/lib/osx,
 					../../../addons/ofxOpenCv/src,
+					"../../../addons/ofxCv/**",
 				);
 				ICON = "$(ICON_NAME_RELEASE)";
 				ICON_FILE = "$(ICON_FILE_PATH)$(ICON)";
