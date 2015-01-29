@@ -28,19 +28,16 @@ void ofApp::setup(){
         default:
             break;
     }
-
+    
+    
     setupOpenCv();
     setupOsc();
     
-}
-
-//--------------------------------------------------------------
-void ofApp::setupPanelGrabber(){
-    bluestrokGrabber = ofPtr<ofxBluestorkGrabber>(new ofxBluestorkGrabber);
-    bluestrokGrabber->setCameraAddress(m_pAdress);
+    openCvPanel.setPosition(700, 400);
+    oscPanel.setPosition(1000, 400);
+    grabberPanel.setPosition(1000, 550);
+    cameraPanel.setPosition(1000, 550);
     
-    grabberPanel.setup(bluestrokGrabber->parameters);
-    grabberPanel.setPosition(20, 550);
 }
 
 //--------------------------------------------------------------
@@ -51,21 +48,11 @@ void ofApp::setupIpCamera(){
 }
 
 //--------------------------------------------------------------
-void ofApp::setupPanelSource(){
-    cameraPanel.setup("grabber", "grabber.xml");
+void ofApp::setupPanelGrabber(){
+    bluestrokGrabber = ofPtr<ofxBluestorkGrabber>(new ofxBluestorkGrabber);
+    bluestrokGrabber->setCameraAddress(m_pAdress);
     
-    cameraPanel.add(m_pSource.set("source", 0, 0, 2));
-    cameraPanel.add(m_pSourceDisplay.set("sourceDisplay", ""));
-    cameraPanel.add(m_pMoviePath.set("moviePath", "fingers.mov"));
-    cameraPanel.add(m_pAdress.set("adress", "192.168.3.101"));
-    cameraPanel.add(m_pGrabWidth.set("grabWidth", 320, 320, 1280));
-    cameraPanel.add(m_pGrabHeight.set("grabHeight", 240, 240, 768));
-    cameraPanel.add(m_pDrawWidth.set("drawWidth", 320, 320, 1280));
-    cameraPanel.add(m_pDrawHeight.set("drawHeight", 240, 240, 768));
-    
-    cameraPanel.setPosition(260, 550);
-    cameraPanel.loadFromFile("grabber.xml");
-    
+    grabberPanel.setup(bluestrokGrabber->parameters);
 }
 
 //--------------------------------------------------------------
@@ -94,7 +81,23 @@ void ofApp::setupPanelOpenCv(){
     openCvPanel.add(m_pShowLabels.setup("labels", true));
     
     openCvPanel.loadFromFile("openCv.xml");
-    openCvPanel.setPosition(500, 550);
+    
+}
+
+//--------------------------------------------------------------
+void ofApp::setupPanelSource(){
+    cameraPanel.setup("grabber", "grabber.xml");
+    
+    cameraPanel.add(m_pSource.set("source", 0, 0, 2));
+    cameraPanel.add(m_pSourceDisplay.set("sourceDisplay", ""));
+    cameraPanel.add(m_pMoviePath.set("moviePath", "fingers.mov"));
+    cameraPanel.add(m_pAdress.set("adress", "192.168.3.101"));
+    cameraPanel.add(m_pGrabWidth.set("grabWidth", 320, 320, 1280));
+    cameraPanel.add(m_pGrabHeight.set("grabHeight", 240, 240, 768));
+    cameraPanel.add(m_pDrawWidth.set("drawWidth", 320, 320, 1280));
+    cameraPanel.add(m_pDrawHeight.set("drawHeight", 240, 240, 768));
+    
+    cameraPanel.loadFromFile("grabber.xml");
     
 }
 
@@ -119,7 +122,6 @@ void ofApp::setupOsc(){
     oscPanel.add(m_pPort.set("port", 9001));
     oscPanel.add(m_pPrefix.set("prefix", "cam1"));
     
-    oscPanel.setPosition(750, 550);
     oscPanel.loadFromFile("osc.xml");
     
     oscSender.setup(m_pHost, m_pPort);
@@ -253,7 +255,8 @@ void ofApp::updateOpenCv(){
 void ofApp::updateOsc(){
     
     //if (reportOsc.length() > 1000) {
-    reportOsc = "";
+    reportOsc.str("");
+    reportOsc.clear();
     //}
     
     for(int i = 0; i < contourFinder.size(); i++) {
@@ -263,27 +266,31 @@ void ofApp::updateOsc(){
         }
         
         ofPoint center = ofxCv::toOf(contourFinder.getCenter(i));
+        ofPoint velocity = ofxCv::toOf(contourFinder.getVelocity(i));
         float radius = sqrt(contourFinder.getContourArea(i)/PI);
         
-        ofxOscMessage m = getMessage(contourFinder.getLabel(i), center, radius);
+        ofxOscMessage m = getMessage(contourFinder.getLabel(i), center, velocity, radius);
         oscSender.sendMessage(m);
         
-        string message = "Message Osc : " + m.getAddress() + ":" ;
+        reportOsc << "Message Osc : " << endl;
+        reportOsc << m.getAddress() + ":" ;
         
         vector<ofxOscArg>::iterator arg;
         for (int nbArgs=0; nbArgs<m.getNumArgs(); nbArgs++) {
-            message += m.getArgAsString(nbArgs) + " - ";
+            reportOsc << m.getArgAsString(nbArgs);
+            if(nbArgs<(m.getNumArgs()-1)){
+                reportOsc << " - ";
+            }
         }
         
-        reportOsc.append(message);
-        ofLogVerbose() << message;
+        ofLogVerbose() << reportOsc.str();
         
     }
     
 }
 
 //-----------------------------------------------------------------------------
-ofxOscMessage ofApp::getMessage(int _blobIndex, ofPoint _center, float _radius){
+ofxOscMessage ofApp::getMessage(int _blobIndex, ofPoint _pos, ofPoint _vel, float _radius){
     
     ofxOscMessage m;
     string prefix = m_pPrefix;
@@ -291,9 +298,11 @@ ofxOscMessage ofApp::getMessage(int _blobIndex, ofPoint _center, float _radius){
     m.setAddress("/" + prefix + "/blobs");
     
     m.addStringArg(ofToString(_blobIndex, 4, '0'));
-    m.addFloatArg((float)(_center.x)/(float)m_pGrabWidth);
-    m.addFloatArg((float)(_center.y)/(float)m_pGrabHeight);
+    m.addFloatArg((float)(_pos.x)/(float)m_pGrabWidth);
+    m.addFloatArg((float)(_pos.y)/(float)m_pGrabHeight);
     m.addFloatArg(_radius);
+    m.addFloatArg((float)(_vel.x)/(float)m_pGrabWidth);
+    m.addFloatArg((float)(_vel.y)/(float)m_pGrabHeight);
     
     return m;
     
@@ -340,11 +349,13 @@ void ofApp::draw(){
     << "num blobs found " << contourFinder.size() << endl
     << "fps: " << ofGetFrameRate();
     
-    ofDrawBitmapString(reportStr.str(), 750, 360);
-    
-    // Report OSC
-    ofDrawBitmapString(reportOsc, 750, 500);
-    
+    if (reportStr.str().size() > 0) {
+        ofDrawBitmapString(reportStr.str(), 700, 275);
+    }
+    if (reportOsc.str().size() > 0) {
+        ofDrawBitmapString(reportOsc.str(), 700, 350);
+    }
+
 }
 
 //--------------------------------------------------------------

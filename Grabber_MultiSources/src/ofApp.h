@@ -99,7 +99,7 @@ public:
     
     // OSC -----------------------------------------
     ofxOscSender        oscSender;
-    string              reportOsc;
+    stringstream        reportOsc;
     
     ofxPanel            oscPanel;
     ofParameter<bool>       m_pReady;
@@ -113,7 +113,7 @@ public:
     ofParameter<bool>       m_pRevertX;
     ofParameter<bool>       m_pRevertY;
     
-    ofxOscMessage getMessage(int _blobIndex, ofPoint _center, float _radius);
+    ofxOscMessage getMessage(int _blobLabel, ofPoint _pos, ofPoint _vel, float _radius);
     
 
     // Kinect --------------------------------------

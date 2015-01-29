@@ -71,7 +71,7 @@ public:
     
     // OSC -----------------------------------------
     ofxOscSender        oscSender;
-    string              reportOsc;
+    stringstream        reportOsc;
     
     ofxPanel            oscPanel;
     ofParameter<bool>       m_pReady;
