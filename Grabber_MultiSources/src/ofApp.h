@@ -113,7 +113,7 @@ public:
     ofParameter<bool>       m_pRevertX;
     ofParameter<bool>       m_pRevertY;
     
-    ofxOscMessage getMessage(int _blobLabel, ofPoint _pos, ofPoint _vel, float _radius);
+    ofxOscMessage getMessage(int _blobLabel, ofPoint _pos, ofPoint _vel, float _angle, float _radius);
     
 
     // Kinect --------------------------------------

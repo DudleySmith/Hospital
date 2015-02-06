@@ -3,7 +3,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
     
-    ofSetLogLevel(OF_LOG_VERBOSE);
+    ofSetLogLevel(OF_LOG_ERROR);
     
     // Setup panels
     setupPanelOpenCv();
@@ -267,9 +267,10 @@ void ofApp::updateOsc(){
         
         ofPoint center = ofxCv::toOf(contourFinder.getCenter(i));
         ofPoint velocity = ofxCv::toOf(contourFinder.getVelocity(i));
+        float angle = velocity.angle(ofPoint(1,0));
         float radius = sqrt(contourFinder.getContourArea(i)/PI);
         
-        ofxOscMessage m = getMessage(contourFinder.getLabel(i), center, velocity, radius);
+        ofxOscMessage m = getMessage(contourFinder.getLabel(i), center, velocity, angle, radius);
         oscSender.sendMessage(m);
         
         reportOsc << "Message Osc : " << endl;
@@ -279,7 +280,7 @@ void ofApp::updateOsc(){
         for (int nbArgs=0; nbArgs<m.getNumArgs(); nbArgs++) {
             reportOsc << m.getArgAsString(nbArgs);
             if(nbArgs<(m.getNumArgs()-1)){
-                reportOsc << " - ";
+                reportOsc << " : " << endl;
             }
         }
         
@@ -290,7 +291,7 @@ void ofApp::updateOsc(){
 }
 
 //-----------------------------------------------------------------------------
-ofxOscMessage ofApp::getMessage(int _blobIndex, ofPoint _pos, ofPoint _vel, float _radius){
+ofxOscMessage ofApp::getMessage(int _blobIndex, ofPoint _pos, ofPoint _vel, float _angle, float _radius){
     
     ofxOscMessage m;
     string prefix = m_pPrefix;
@@ -303,6 +304,7 @@ ofxOscMessage ofApp::getMessage(int _blobIndex, ofPoint _pos, ofPoint _vel, floa
     m.addFloatArg(_radius);
     m.addFloatArg((float)(_vel.x)/(float)m_pGrabWidth);
     m.addFloatArg((float)(_vel.y)/(float)m_pGrabHeight);
+    m.addFloatArg(_angle);
     
     return m;
     
