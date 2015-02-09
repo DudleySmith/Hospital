@@ -12,6 +12,8 @@
 
 #include "ofxKinect.h"
 
+#include "hospitalMessage.h"
+
 class ofApp : public ofBaseApp{
     
 public:

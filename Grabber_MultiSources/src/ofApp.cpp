@@ -269,8 +269,22 @@ void ofApp::updateOsc(){
         ofPoint velocity = ofxCv::toOf(contourFinder.getVelocity(i));
         float angle = velocity.angle(ofPoint(1,0));
         float radius = sqrt(contourFinder.getContourArea(i)/PI);
-        
+        /*
+         
+         old way
+         
         ofxOscMessage m = getMessage(contourFinder.getLabel(i), center, velocity, angle, radius);
+        */
+        
+        // new way
+        velocity.x = (float)(velocity.x)/(float)m_pGrabWidth;
+        velocity.y = (float)(velocity.y)/(float)m_pGrabHeight;
+        
+        center.x = (float)(center.x)/(float)m_pGrabWidth;
+        center.y = (float)(center.y)/(float)m_pGrabHeight;
+        
+        ofxOscMessage m = hospitalMessage::getMessage(m_pPrefix, contourFinder.getLabel(i), center, velocity, angle, radius);
+        
         oscSender.sendMessage(m);
         
         reportOsc << "Message Osc : " << endl;

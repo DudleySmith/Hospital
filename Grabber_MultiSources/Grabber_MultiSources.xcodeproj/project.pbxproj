@@ -86,6 +86,7 @@
 		EAA59C411A56CB8E0005DD04 /* usb_libusb10.c in Sources */ = {isa = PBXBuildFile; fileRef = EAA59C201A56CB8D0005DD04 /* usb_libusb10.c */; };
 		EAA59C431A56CB8E0005DD04 /* ofxKinectExtras.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAA59C321A56CB8E0005DD04 /* ofxKinectExtras.cpp */; };
 		EAA59C441A56CB8E0005DD04 /* ofxKinect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAA59C351A56CB8E0005DD04 /* ofxKinect.cpp */; };
+		EAFE479B1A895D97003E8EA2 /* hospitalMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAFE47981A895D97003E8EA2 /* hospitalMessage.cpp */; };
 		EFF44E8E264F0AD343D1E018 /* ofGstUtils.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 4EF80366647ACFEB44E48FA6 /* ofGstUtils.cpp */; };
 		F19063B0EC4D063E8E2588EC /* ofxGStreamer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = ACDA7C81A6F82A656A6940BC /* ofxGStreamer.cpp */; };
 		F285EB3169F1566CA3D93C20 /* ofxPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = E112B3AEBEA2C091BF2B40AE /* ofxPanel.cpp */; };
@@ -374,6 +375,8 @@
 		EAA59C341A56CB8E0005DD04 /* ofxBase3DVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBase3DVideo.h; sourceTree = "<group>"; };
 		EAA59C351A56CB8E0005DD04 /* ofxKinect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxKinect.cpp; sourceTree = "<group>"; };
 		EAA59C361A56CB8E0005DD04 /* ofxKinect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxKinect.h; sourceTree = "<group>"; };
+		EAFE47981A895D97003E8EA2 /* hospitalMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hospitalMessage.cpp; path = Common/hospitalMessage.cpp; sourceTree = "<group>"; };
+		EAFE47991A895D97003E8EA2 /* hospitalMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hospitalMessage.h; path = Common/hospitalMessage.h; sourceTree = "<group>"; };
 		EBA8BFC368550FBAB0A9C215 /* ofxBluestorkGui.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxBluestorkGui.cpp; path = ../../../addons/ofxBluestorkGrabber/src/ofxBluestorkGui.cpp; sourceTree = SOURCE_ROOT; };
 		ECF8674C7975F1063C5E30CA /* ofxGuiGroup.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofxGuiGroup.cpp; path = ../../../addons/ofxGui/src/ofxGuiGroup.cpp; sourceTree = SOURCE_ROOT; };
 		F198996ED5C849097CC1ABB5 /* ofGstVideoGrabber.cpp */ = {isa = PBXFileReference; explicitFileType = sourcecode.cpp.cpp; fileEncoding = 30; name = ofGstVideoGrabber.cpp; path = ../../../libs/openFrameworks/video/ofGstVideoGrabber.cpp; sourceTree = SOURCE_ROOT; };
@@ -553,6 +556,7 @@
 				EA85997C1A59C9A4002BFDB7 /* osc.xml */,
 				E4B6FCAD0C3E899E008CF71C /* openFrameworks-Info.plist */,
 				E4EB6923138AFD0F00A09F29 /* Project.xcconfig */,
+				EAFE479A1A895D97003E8EA2 /* Common */,
 				E4B69E1C0A3A1BDC003C02F2 /* src */,
 				E4EEC9E9138DF44700A80321 /* openFrameworks */,
 				BB4B014C10F69532006C3DED /* addons */,
@@ -1240,6 +1244,16 @@
 			path = extra;
 			sourceTree = "<group>";
 		};
+		EAFE479A1A895D97003E8EA2 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				EAFE47981A895D97003E8EA2 /* hospitalMessage.cpp */,
+				EAFE47991A895D97003E8EA2 /* hospitalMessage.h */,
+			);
+			name = Common;
+			path = ..;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1342,6 +1356,7 @@
 				EAA59C441A56CB8E0005DD04 /* ofxKinect.cpp in Sources */,
 				856AA354D08AB4B323081444 /* ofxBaseGui.cpp in Sources */,
 				EAA59C3E1A56CB8E0005DD04 /* loader.c in Sources */,
+				EAFE479B1A895D97003E8EA2 /* hospitalMessage.cpp in Sources */,
 				EA6A34051A1FA716007987B5 /* ofxCvFloatImage.cpp in Sources */,
 				EA1BB8841A7AA03300E7B844 /* Utilities.cpp in Sources */,
 				EAA59C411A56CB8E0005DD04 /* usb_libusb10.c in Sources */,
