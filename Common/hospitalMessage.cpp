@@ -28,6 +28,17 @@ ofxOscMessage hospitalMessage::getMessage(string _prefix, int _blobIndex, ofPoin
 }
 
 // ------------------------------------------------------------------------------------
+bool hospitalMessage::isOk(ofxOscMessage m){
+    string address = m.getAddress();
+
+    if(ofIsStringInString(address, "blobs") > 0){
+        return true;
+    }
+    
+    return false;
+    
+}
+
 string hospitalMessage::getID(ofxOscMessage m){
     
     string id = "";

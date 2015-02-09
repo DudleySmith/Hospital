@@ -21,6 +21,7 @@ public:
     
     // ---------
     // Receive side
+    static bool isOk(ofxOscMessage m);
     static string getID(ofxOscMessage m);
     static ofPoint getPosition(ofxOscMessage m);
     static ofPoint getVelocity(ofxOscMessage m);
