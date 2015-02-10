@@ -3,7 +3,7 @@
 #include "ofMain.h"
 #include "ofxOsc.h"
 
-#include "hospitalMessage.h"
+#include "hospitalPoint.h"
 
 // listen on port 12345
 #define PORT 1551
@@ -37,6 +37,6 @@ class ofApp : public ofBaseApp {
 		string mouseButtonState;
     
         // Check --
-        ofPoint position;
-    float radius;
+        vector<hospitalPoint> points;
+        
 };

@@ -24,18 +24,19 @@ void ofApp::update(){
 			msg_strings[i] = "";
 		}
 	}
-
+    
+    points.clear();
+    
 	// check for waiting messages
 	while(receiver.hasWaitingMessages()){
 		// get the next message
 		ofxOscMessage m;
 		receiver.getNextMessage(&m);
         
-        if(hospitalMessage::isOk(m) == true){
-            
-            position = hospitalMessage::getPosition(m);
-            radius = hospitalMessage::getRadius(m);
-            
+        if (hospitalMessage::isOk(m)) {
+            hospitalPoint point;
+            points.push_back(point);
+            points.back().update(m);
         }
         
         // unrecognized message: display on the bottom of the screen
@@ -87,9 +88,11 @@ void ofApp::draw(){
 		ofDrawBitmapString(msg_strings[i], 10, 40 + 15 * i);
 	}
 
+    vector<hospitalPoint>::iterator onePoint;
+    for (onePoint = points.begin(); onePoint != points.end(); onePoint++) {
+        onePoint->draw();
+    }
     
-    ofCircle(position.x * ofGetWidth(), position.y * ofGetHeight(), radius);
-
 }
 
 //--------------------------------------------------------------

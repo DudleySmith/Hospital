@@ -13,6 +13,11 @@
 
 #include "ofMain.h"
 
+#include "hospitalRibbon.h"
+#include "hospitalPoint.h"
+
+#define PORT 1551
+
 class ofApp : public ofBaseApp{
 
   public:
@@ -31,13 +36,8 @@ class ofApp : public ofBaseApp{
     void gotMessage(ofMessage msg);
 	
 	//this holds all of our points
-    vector<ofVec3f> points;
-    //this keeps track of the center of all the points
-    ofVec3f center;
+    hospitalRibbon ribbon;
+
+    ofxOscReceiver receiver;
     
-	//our camera objects for looking at the scene from multiple perspectives
-	ofCamera camera;
-	
-	//if usecamera is true, we'll turn on the camera view
-    bool usecamera;
 };
