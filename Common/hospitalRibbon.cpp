@@ -12,7 +12,7 @@
 void hospitalRibbon::update(){
     
     for(unsigned int i = 0; i < points.size(); i++){
-        points[i].z -= 4;
+        points[i].z -= 0.5;
         //sumOfAllPoints += points[i];
     }
     

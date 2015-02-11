@@ -13,7 +13,7 @@
 
 #include "ofMain.h"
 
-#include "hospitalRibbon.h"
+#include "hospitalRibbonsManager.h"
 #include "hospitalPoint.h"
 
 #define PORT 1551
@@ -36,7 +36,7 @@ class ofApp : public ofBaseApp{
     void gotMessage(ofMessage msg);
 	
 	//this holds all of our points
-    hospitalRibbon ribbon;
+    hospitalRibbonsManager ribbonManager;
 
     ofxOscReceiver receiver;
     

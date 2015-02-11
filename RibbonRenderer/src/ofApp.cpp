@@ -17,7 +17,7 @@ void ofApp::setup(){
 	//just set up the openFrameworks stuff
     ofSetFrameRate(60);
     ofSetVerticalSync(true);
-    ofBackground(255);
+    ofBackground(0);
     
     // listen on the given port
     cout << "listening for osc messages on port " << PORT << "\n";
@@ -36,17 +36,17 @@ void ofApp::update(){
         if (hospitalMessage::isOk(m)) {
             hospitalPoint point;
             point.update(m);
-            ribbon.addPoint(point.getPosition());
+            ribbonManager.newPoint(point);
         }
     }
         
-    ribbon.update();
+    ribbonManager.update();
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofSetColor(0);
-    ribbon.draw();
+    ofSetColor(255);
+    ribbonManager.draw();
 }
 
 //--------------------------------------------------------------
@@ -59,8 +59,6 @@ void ofApp::keyReleased(int key){
 
 //--------------------------------------------------------------
 void ofApp::mouseMoved(int x, int y ){
-    ofPoint mousePoint(x,y,0);
-    ribbon.addPoint(mousePoint);
 }
 
 //--------------------------------------------------------------

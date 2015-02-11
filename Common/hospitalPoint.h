@@ -23,6 +23,7 @@ class hospitalPoint {
 public:
     float getTimeStampf(){return mTimeStampf;};
     ofPoint getPosition(){return mPosition;};
+    string getId(){return mID;};
     
 public:
     void update(ofxOscMessage m);
