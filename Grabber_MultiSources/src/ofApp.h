@@ -35,6 +35,8 @@ public:
     
     void updateOpenCv();
     void updateOsc();
+    void updatePoints();
+    
     void setBgPressed();
     
     void draw();
@@ -123,6 +125,8 @@ public:
     
     // Movie file -----------------------------------
     ofVideoPlayer vidPlayer;
+    
+    bool bNewFrame;
     
 };
 

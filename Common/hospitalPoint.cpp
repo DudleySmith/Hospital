@@ -22,8 +22,6 @@ void hospitalPoint::update(ofxOscMessage m){
         mAngle = hospitalMessage::getAngle(m);
         mRadius = hospitalMessage::getRadius(m);
         
-        mTimeStampf = ofGetElapsedTimef();
-        
     }
     
 }

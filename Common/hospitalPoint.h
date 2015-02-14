@@ -18,10 +18,8 @@ class hospitalPoint {
     ofPoint mVelocity;
     float mAngle;
     float mRadius;
-    float mTimeStampf;
     
 public:
-    float getTimeStampf(){return mTimeStampf;};
     ofPoint getPosition(){return mPosition;};
     string getId(){return mID;};
     

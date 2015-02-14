@@ -19,14 +19,33 @@ void ofApp::setup(){
     ofSetVerticalSync(true);
     ofBackground(0);
     
+    // Setup Panels -------------------------
+    // Osc panel
+    plOsc.setup("osc", "main.xml");
+    plOsc.add(psPort.set("Port", 1551, 999, 9999));
+    plOsc.loadFromFile("main.xml");
+    // Ribbon panel
+    ribbonManager.parameters.setName("ribbons");
+    plRibbons.setup(ribbonManager.parameters, "ribbons.xml");
+    plRibbons.loadFromFile("ribbons.xml");
+    
+    // Positions
+    plRibbons.setPosition(25, 25);
+    plOsc.setPosition(275, 25);
+    
+    mDrawGui = false;
+    
     // listen on the given port
-    cout << "listening for osc messages on port " << PORT << "\n";
-    receiver.setup(PORT);
+    cout << "listening for osc messages on port " << psPort << "\n";
+    receiver.setup(psPort);
+    
     
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
+    
+    
     // check for waiting messages
     while(receiver.hasWaitingMessages()){
         // get the next message
@@ -45,12 +64,34 @@ void ofApp::update(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
-    ofSetColor(255);
+    
     ribbonManager.draw();
+    
+    
+    if(mDrawGui){
+        plOsc.draw();
+        plRibbons.draw();
+        ofDrawBitmapString("Ribbons count=" + ribbonManager.countMessage(), ofPoint(25, ofGetHeight() - 25));
+    }
+    
+    
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::keyPressed(int key){
+    switch (key) {
+        case 'h':
+            if (mDrawGui==false) {
+                mDrawGui=true;
+            }else{
+                mDrawGui=false;
+            }
+            break;
+            
+        default:
+            break;
+    }
 }
 
 //--------------------------------------------------------------

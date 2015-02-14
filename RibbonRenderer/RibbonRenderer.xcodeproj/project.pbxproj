@@ -26,6 +26,14 @@
 		E7E077E515D3B63C0020DFD4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */; };
 		E7E077E815D3B6510020DFD4 /* QTKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7E077E715D3B6510020DFD4 /* QTKit.framework */; };
 		E7F985F815E0DEA3003869B5 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7F985F515E0DE99003869B5 /* Accelerate.framework */; };
+		EA53C3181A8C931C00BBEEA5 /* ofxBaseGui.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA53C3071A8C931C00BBEEA5 /* ofxBaseGui.cpp */; };
+		EA53C3191A8C931C00BBEEA5 /* ofxButton.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA53C3091A8C931C00BBEEA5 /* ofxButton.cpp */; };
+		EA53C31A1A8C931C00BBEEA5 /* ofxGuiGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA53C30C1A8C931C00BBEEA5 /* ofxGuiGroup.cpp */; };
+		EA53C31B1A8C931C00BBEEA5 /* ofxLabel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA53C30E1A8C931C00BBEEA5 /* ofxLabel.cpp */; };
+		EA53C31C1A8C931C00BBEEA5 /* ofxPanel.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA53C3101A8C931C00BBEEA5 /* ofxPanel.cpp */; };
+		EA53C31D1A8C931C00BBEEA5 /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA53C3121A8C931C00BBEEA5 /* ofxSlider.cpp */; };
+		EA53C31E1A8C931C00BBEEA5 /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA53C3141A8C931C00BBEEA5 /* ofxSliderGroup.cpp */; };
+		EA53C31F1A8C931C00BBEEA5 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA53C3161A8C931C00BBEEA5 /* ofxToggle.cpp */; };
 		EAD7A10D1A8B82E200C46253 /* hospitalRibbonsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD7A10B1A8B82E200C46253 /* hospitalRibbonsManager.cpp */; };
 		EAFE47D11A8AB53E003E8EA2 /* hospitalMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAFE47CD1A8AB53E003E8EA2 /* hospitalMessage.cpp */; };
 		EAFE47D21A8AB53E003E8EA2 /* hospitalPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAFE47CF1A8AB53E003E8EA2 /* hospitalPoint.cpp */; };
@@ -100,6 +108,23 @@
 		E7E077E415D3B63C0020DFD4 /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = /System/Library/Frameworks/CoreVideo.framework; sourceTree = "<absolute>"; };
 		E7E077E715D3B6510020DFD4 /* QTKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QTKit.framework; path = /System/Library/Frameworks/QTKit.framework; sourceTree = "<absolute>"; };
 		E7F985F515E0DE99003869B5 /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = /System/Library/Frameworks/Accelerate.framework; sourceTree = "<absolute>"; };
+		EA53C3071A8C931C00BBEEA5 /* ofxBaseGui.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxBaseGui.cpp; sourceTree = "<group>"; };
+		EA53C3081A8C931C00BBEEA5 /* ofxBaseGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBaseGui.h; sourceTree = "<group>"; };
+		EA53C3091A8C931C00BBEEA5 /* ofxButton.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxButton.cpp; sourceTree = "<group>"; };
+		EA53C30A1A8C931C00BBEEA5 /* ofxButton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxButton.h; sourceTree = "<group>"; };
+		EA53C30B1A8C931C00BBEEA5 /* ofxGui.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGui.h; sourceTree = "<group>"; };
+		EA53C30C1A8C931C00BBEEA5 /* ofxGuiGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxGuiGroup.cpp; sourceTree = "<group>"; };
+		EA53C30D1A8C931C00BBEEA5 /* ofxGuiGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxGuiGroup.h; sourceTree = "<group>"; };
+		EA53C30E1A8C931C00BBEEA5 /* ofxLabel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxLabel.cpp; sourceTree = "<group>"; };
+		EA53C30F1A8C931C00BBEEA5 /* ofxLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxLabel.h; sourceTree = "<group>"; };
+		EA53C3101A8C931C00BBEEA5 /* ofxPanel.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxPanel.cpp; sourceTree = "<group>"; };
+		EA53C3111A8C931C00BBEEA5 /* ofxPanel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxPanel.h; sourceTree = "<group>"; };
+		EA53C3121A8C931C00BBEEA5 /* ofxSlider.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSlider.cpp; sourceTree = "<group>"; };
+		EA53C3131A8C931C00BBEEA5 /* ofxSlider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSlider.h; sourceTree = "<group>"; };
+		EA53C3141A8C931C00BBEEA5 /* ofxSliderGroup.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxSliderGroup.cpp; sourceTree = "<group>"; };
+		EA53C3151A8C931C00BBEEA5 /* ofxSliderGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSliderGroup.h; sourceTree = "<group>"; };
+		EA53C3161A8C931C00BBEEA5 /* ofxToggle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxToggle.cpp; sourceTree = "<group>"; };
+		EA53C3171A8C931C00BBEEA5 /* ofxToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxToggle.h; sourceTree = "<group>"; };
 		EAD7A10B1A8B82E200C46253 /* hospitalRibbonsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hospitalRibbonsManager.cpp; sourceTree = "<group>"; };
 		EAD7A10C1A8B82E200C46253 /* hospitalRibbonsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hospitalRibbonsManager.h; sourceTree = "<group>"; };
 		EAFE47CD1A8AB53E003E8EA2 /* hospitalMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hospitalMessage.cpp; sourceTree = "<group>"; };
@@ -174,6 +199,7 @@
 		BB4B014C10F69532006C3DED /* addons */ = {
 			isa = PBXGroup;
 			children = (
+				EA53C3051A8C931C00BBEEA5 /* ofxGui */,
 				EAFE47D61A8AB715003E8EA2 /* ofxOsc */,
 			);
 			name = addons;
@@ -256,6 +282,39 @@
 				E4328143138ABC890047C5CB /* openFrameworksLib.xcodeproj */,
 			);
 			name = openFrameworks;
+			sourceTree = "<group>";
+		};
+		EA53C3051A8C931C00BBEEA5 /* ofxGui */ = {
+			isa = PBXGroup;
+			children = (
+				EA53C3061A8C931C00BBEEA5 /* src */,
+			);
+			name = ofxGui;
+			path = ../../../addons/ofxGui;
+			sourceTree = "<group>";
+		};
+		EA53C3061A8C931C00BBEEA5 /* src */ = {
+			isa = PBXGroup;
+			children = (
+				EA53C3071A8C931C00BBEEA5 /* ofxBaseGui.cpp */,
+				EA53C3081A8C931C00BBEEA5 /* ofxBaseGui.h */,
+				EA53C3091A8C931C00BBEEA5 /* ofxButton.cpp */,
+				EA53C30A1A8C931C00BBEEA5 /* ofxButton.h */,
+				EA53C30B1A8C931C00BBEEA5 /* ofxGui.h */,
+				EA53C30C1A8C931C00BBEEA5 /* ofxGuiGroup.cpp */,
+				EA53C30D1A8C931C00BBEEA5 /* ofxGuiGroup.h */,
+				EA53C30E1A8C931C00BBEEA5 /* ofxLabel.cpp */,
+				EA53C30F1A8C931C00BBEEA5 /* ofxLabel.h */,
+				EA53C3101A8C931C00BBEEA5 /* ofxPanel.cpp */,
+				EA53C3111A8C931C00BBEEA5 /* ofxPanel.h */,
+				EA53C3121A8C931C00BBEEA5 /* ofxSlider.cpp */,
+				EA53C3131A8C931C00BBEEA5 /* ofxSlider.h */,
+				EA53C3141A8C931C00BBEEA5 /* ofxSliderGroup.cpp */,
+				EA53C3151A8C931C00BBEEA5 /* ofxSliderGroup.h */,
+				EA53C3161A8C931C00BBEEA5 /* ofxToggle.cpp */,
+				EA53C3171A8C931C00BBEEA5 /* ofxToggle.h */,
+			);
+			path = src;
 			sourceTree = "<group>";
 		};
 		EAFE47CC1A8AB53E003E8EA2 /* Common */ = {
@@ -468,9 +527,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAFE48031A8AB715003E8EA2 /* UdpSocket.cpp in Sources */,
+				EA53C31F1A8C931C00BBEEA5 /* ofxToggle.cpp in Sources */,
 				EAD7A10D1A8B82E200C46253 /* hospitalRibbonsManager.cpp in Sources */,
 				EAFE480C1A8AB715003E8EA2 /* ofxOscParameterSync.cpp in Sources */,
 				EAFE48041A8AB715003E8EA2 /* NetworkingUtilsWin.cpp in Sources */,
+				EA53C31A1A8C931C00BBEEA5 /* ofxGuiGroup.cpp in Sources */,
 				EAFE47D21A8AB53E003E8EA2 /* hospitalPoint.cpp in Sources */,
 				EAFE480D1A8AB715003E8EA2 /* ofxOscReceiver.cpp in Sources */,
 				EAFE48051A8AB715003E8EA2 /* UdpSocketWin.cpp in Sources */,
@@ -480,12 +541,18 @@
 				EAFE480A1A8AB715003E8EA2 /* ofxOscBundle.cpp in Sources */,
 				EAFE47D51A8AB580003E8EA2 /* hospitalRibbon.cpp in Sources */,
 				EAFE48091A8AB715003E8EA2 /* OscTypes.cpp in Sources */,
+				EA53C3191A8C931C00BBEEA5 /* ofxButton.cpp in Sources */,
 				EAFE480B1A8AB715003E8EA2 /* ofxOscMessage.cpp in Sources */,
 				E4B69E200A3A1BDC003C02F2 /* main.cpp in Sources */,
 				EAFE48061A8AB715003E8EA2 /* OscOutboundPacketStream.cpp in Sources */,
+				EA53C31B1A8C931C00BBEEA5 /* ofxLabel.cpp in Sources */,
 				EAFE48011A8AB715003E8EA2 /* IpEndpointName.cpp in Sources */,
+				EA53C31D1A8C931C00BBEEA5 /* ofxSlider.cpp in Sources */,
 				E4B69E210A3A1BDC003C02F2 /* ofApp.cpp in Sources */,
 				EAFE48021A8AB715003E8EA2 /* NetworkingUtils.cpp in Sources */,
+				EA53C3181A8C931C00BBEEA5 /* ofxBaseGui.cpp in Sources */,
+				EA53C31C1A8C931C00BBEEA5 /* ofxPanel.cpp in Sources */,
+				EA53C31E1A8C931C00BBEEA5 /* ofxSliderGroup.cpp in Sources */,
 				EAFE48071A8AB715003E8EA2 /* OscPrintReceivedElements.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

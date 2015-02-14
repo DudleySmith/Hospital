@@ -4,6 +4,7 @@
 void ofApp::setup(){
     
     ofSetLogLevel(OF_LOG_ERROR);
+    ofSetFrameRate(20);
     
     // Setup panels
     setupPanelOpenCv();
@@ -156,7 +157,7 @@ void ofApp::setupKinect(){
 //--------------------------------------------------------------
 void ofApp::update(){
     
-    bool bNewFrame = false;
+    bNewFrame = false;
     
     switch (m_pSource) {
         case 0:
@@ -190,10 +191,6 @@ void ofApp::update(){
             break;
     }
     
-    if (bNewFrame==true) {
-        updateOpenCv();
-        updateOsc();
-    }
 }
 
 //--------------------------------------------------------------
@@ -305,6 +302,14 @@ void ofApp::updateOsc(){
 }
 
 //-----------------------------------------------------------------------------
+void ofApp::updatePoints(){
+    if (bNewFrame==true) {
+        updateOpenCv();
+        updateOsc();
+    }
+}
+
+//-----------------------------------------------------------------------------
 ofxOscMessage ofApp::getMessage(int _blobIndex, ofPoint _pos, ofPoint _vel, float _angle, float _radius){
     
     ofxOscMessage m;
@@ -331,6 +336,8 @@ void ofApp::setBgPressed(){
 
 //--------------------------------------------------------------
 void ofApp::draw(){
+    
+    updatePoints();
     
     if(m_pDraw){
         drawOpenCv();

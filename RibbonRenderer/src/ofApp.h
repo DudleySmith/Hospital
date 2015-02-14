@@ -12,11 +12,10 @@
 #pragma once
 
 #include "ofMain.h"
+#include "ofxGui.h"
 
 #include "hospitalRibbonsManager.h"
 #include "hospitalPoint.h"
-
-#define PORT 1551
 
 class ofApp : public ofBaseApp{
 
@@ -39,5 +38,12 @@ class ofApp : public ofBaseApp{
     hospitalRibbonsManager ribbonManager;
 
     ofxOscReceiver receiver;
+    
+    ofxPanel plOsc;
+    ofParameter<int> psPort;
+
+    ofxPanel plRibbons;
+    
+    bool mDrawGui;
     
 };
