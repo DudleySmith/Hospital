@@ -12,17 +12,18 @@
 hospitalRibbonsManager::hospitalRibbonsManager(){
     parameters.add(pcBackGround.set("background",ofColor(0,0),ofColor(0,0),ofColor(255,255)));
     parameters.add(pcForeGround.set("foreground",ofColor(255,255),ofColor(0,0),ofColor(255,255)));
+    
+    parameters.add(pbDrawCurves.set("drawCurves", false));
+    parameters.add(pbDrawMeshes.set("drawMeshes", false));
+    
     parameters.add(pfFadeTime.set("fade", 3, 0, 10));
-}
-
-// -------------------------------------------------------------------------------------------
-void hospitalRibbonsManager::addRibbon(hospitalRibbon _r){
+    parameters.add(pfDownSpeed.set("downSpeed", 0.5, 0, 10));
+    parameters.add(pfMinThickness.set("minThickness", 2, 0, 50));
+    parameters.add(pfMaxThickness.set("maxThickness", 20, 0, 50));
     
-}
-
-// -------------------------------------------------------------------------------------------
-void hospitalRibbonsManager::addPointToRibbon(hospitalRibbon _r, ofPoint _p){
-    
+    parameters.add(pfRibbonEffectLevel.set("ribbonFxLevel", 50, 0, 200));
+    parameters.add(pfRibbonIdxPointsDivider.set("ribbonIdxDivider", 20, 1, 150));
+    parameters.add(pfRibbonTimeDivider.set("ribbonTimeDivide", 2, 1, 10));
 }
 
 // -------------------------------------------------------------------------------------------
@@ -50,7 +51,7 @@ void hospitalRibbonsManager::update(){
         // if remaining movement
         if((ofGetElapsedTimef() - oneRibbon->second.getTimeStampf()) <= pfFadeTime){
             // keep alive and update
-            oneRibbon->second.update();
+            oneRibbon->second.update(pfDownSpeed);
         }else{
             mRibbons.erase(oneRibbon->first);
         }
@@ -63,11 +64,31 @@ void hospitalRibbonsManager::draw(){
     
     ofBackground(pcBackGround);
     
+    if(pbDrawCurves==false && pbDrawMeshes==false){
+        return;
+    }
+    
     map<string, hospitalRibbon>::iterator oneRibbon;
     for (oneRibbon=mRibbons.begin(); oneRibbon!=mRibbons.end(); oneRibbon++) {
         // Calculating ratio based on last move time
         float ratio = ofClamp((ofGetElapsedTimef() - oneRibbon->second.getTimeStampf())/pfFadeTime, 0, 1);
-        oneRibbon->second.draw(fadingColors(ratio, pcForeGround, pcBackGround));
+        // Fade to background
+        ofColor drawColor = fadingColors(ratio, pcForeGround, pcBackGround);
+
+        // Draw some meshes if you can
+        if (pbDrawMeshes==true) {
+            oneRibbon->second.drawMesh(drawColor
+                                       , pfMinThickness, pfMaxThickness
+                                       , pfRibbonEffectLevel, pfRibbonIdxPointsDivider, pfRibbonTimeDivider);
+        }
+        
+        // Draw some curves in opposite color
+        if (pbDrawCurves==true) {
+            ofColor oppositColor = drawColor;
+            oppositColor.setHueAngle(drawColor.getHueAngle() + 180);
+            oneRibbon->second.drawShape(oppositColor);
+        }
+        
     }
 }
 

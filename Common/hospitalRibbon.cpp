@@ -9,10 +9,10 @@
 #include "hospitalRibbon.h"
 
 //--------------------------------------------------------------
-void hospitalRibbon::update(){
+void hospitalRibbon::update(float _dnSpeed){
     
     for(unsigned int i = 0; i < points.size(); i++){
-        points[i].z -= 0.5;
+        points[i].z -= _dnSpeed;
         //sumOfAllPoints += points[i];
     }
     
@@ -20,21 +20,12 @@ void hospitalRibbon::update(){
 
 
 //--------------------------------------------------------------
-void hospitalRibbon::draw(ofColor _color){
-    
-    drawMesh(_color);
-    
-    ofColor oppositColor = _color;
-    oppositColor.setHueAngle(_color.getHueAngle() + 180);
-    drawShape(oppositColor);
-    
-}
-//--------------------------------------------------------------
 void hospitalRibbon::drawShape(ofColor _color){
     
     ofPushStyle();
     
     ofSetColor(_color);
+    ofSetLineWidth(5);
     ofNoFill();
     
     ofBeginShape();
@@ -46,7 +37,9 @@ void hospitalRibbon::drawShape(ofColor _color){
 }
 
 //--------------------------------------------------------------
-void hospitalRibbon::drawMesh(ofColor _color){
+void hospitalRibbon::drawMesh(ofColor _color
+                              , float _minThickness, float _maxThickness
+                              , float _ribbonEffectLevel, float _ribbonIdxPointsDivider, float _ribbonTimeDivider){
     
     ofPushStyle();
     
@@ -89,12 +82,16 @@ void hospitalRibbon::drawMesh(ofColor _color){
         
         // thickness depend on distance between point -> brush effect
         float pointRatio = (float)i / (float)points.size();
-        float thickness = ofMap(pointRatio*pointRatio, 0, 1, 2, 20, true);
+        float pointRatioInv = 1 - pointRatio;
+        float thickness = ofMap(pointRatio*pointRatio, 0, 1, _minThickness, _maxThickness, true);
         
         //calculate the points to the left and to the right
         //by extending the current point in the direction of left/right by the length
-        ofPoint leftPoint = thisPoint+toTheLeft*thickness;
-        ofPoint rightPoint = thisPoint+toTheRight*thickness;
+        float ribbonPhase = (float)i / _ribbonIdxPointsDivider + ofGetElapsedTimef() / _ribbonTimeDivider;
+        float ribbonEffect = pointRatioInv*_ribbonEffectLevel*sin(ribbonPhase*TWO_PI);
+        
+        ofPoint leftPoint = thisPoint+toTheLeft*thickness+toTheLeft*ribbonEffect;
+        ofPoint rightPoint = thisPoint+toTheRight*thickness+toTheLeft*ribbonEffect;
         
         //add these points to the triangle strip
         mesh.addVertex(ofPoint(leftPoint.x, leftPoint.y, leftPoint.z));

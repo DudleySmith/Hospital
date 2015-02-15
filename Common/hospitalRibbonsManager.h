@@ -36,7 +36,20 @@ private:
     // Parameters
     ofParameter<ofColor> pcForeGround;
     ofParameter<ofColor> pcBackGround;
+    
+    ofParameter<bool>    pbDrawCurves;
+    ofParameter<bool>    pbDrawMeshes;
+    
     ofParameter<float>   pfFadeTime;
+    ofParameter<float>   pfDownSpeed;
+    ofParameter<float>   pfMinThickness;
+    ofParameter<float>   pfMaxThickness;    
+    
+    ofParameter<float> pfRibbonEffectLevel;
+    ofParameter<float> pfRibbonIdxPointsDivider;
+    ofParameter<float> pfRibbonTimeDivider;
+    
+    
 public:
     ofParameterGroup parameters;
 
