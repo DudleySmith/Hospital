@@ -14,6 +14,9 @@
 
 //--------------------------------------------------------------
 void ofApp::setup(){
+    
+    ofSetLogLevel(OF_LOG_VERBOSE);
+    
 	//just set up the openFrameworks stuff
     ofSetFrameRate(60);
     ofSetVerticalSync(true);

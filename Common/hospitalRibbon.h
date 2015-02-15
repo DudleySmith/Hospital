@@ -23,9 +23,15 @@ public:
 public:
     void addPoint(ofPoint _point);
     void update(float _dnSpeed);
-    void drawShape(ofColor _color);
+    
+    void drawShape(ofColor _color
+                , float _minThickness, float _maxThickness
+                , int globalPointsDiv
+                , float _ribbonEffectLevel, float _ribbonIdxPointsDivider, float _ribbonTimeDivider);
+    
     void drawMesh(ofColor _color
                   , float _minThickness, float _maxThickness
+                  , int globalPointsDiv
                   , float _ribbonEffectLevel, float _ribbonIdxPointsDivider, float _ribbonTimeDivider);
     
 };

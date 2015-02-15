@@ -4,7 +4,6 @@
 void ofApp::setup(){
     
     ofSetLogLevel(OF_LOG_ERROR);
-    ofSetFrameRate(20);
     
     // Setup panels
     setupPanelOpenCv();

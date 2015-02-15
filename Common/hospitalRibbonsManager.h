@@ -45,6 +45,7 @@ private:
     ofParameter<float>   pfMinThickness;
     ofParameter<float>   pfMaxThickness;    
     
+    ofParameter<int> pfGlobalPointsDivider;
     ofParameter<float> pfRibbonEffectLevel;
     ofParameter<float> pfRibbonIdxPointsDivider;
     ofParameter<float> pfRibbonTimeDivider;

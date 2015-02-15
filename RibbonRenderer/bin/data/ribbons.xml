@@ -1,0 +1,15 @@
+<ribbons>
+	<background>0, 0, 0, 0</background>
+	<foreground>255, 255, 255, 255</foreground>
+	<drawCurves>1</drawCurves>
+	<drawMeshes>1</drawMeshes>
+	<fade>3</fade>
+	<downSpeed>0.5</downSpeed>
+	<minThickness>2</minThickness>
+	<maxThickness>20</maxThickness>
+	<ribbonFxLevel>15</ribbonFxLevel>
+	<ribbonIdxDivider>20</ribbonIdxDivider>
+	<ribbonTimeDivide>2</ribbonTimeDivide>
+<ribbons/>
+<globalPointDiv>2</globalPointDiv>
+</ribbons>

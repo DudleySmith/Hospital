@@ -21,6 +21,7 @@ hospitalRibbonsManager::hospitalRibbonsManager(){
     parameters.add(pfMinThickness.set("minThickness", 2, 0, 50));
     parameters.add(pfMaxThickness.set("maxThickness", 20, 0, 50));
     
+    parameters.add(pfGlobalPointsDivider.set("globalPointDiv", 5, 1, 10));
     parameters.add(pfRibbonEffectLevel.set("ribbonFxLevel", 50, 0, 200));
     parameters.add(pfRibbonIdxPointsDivider.set("ribbonIdxDivider", 20, 1, 150));
     parameters.add(pfRibbonTimeDivider.set("ribbonTimeDivide", 2, 1, 10));
@@ -79,6 +80,7 @@ void hospitalRibbonsManager::draw(){
         if (pbDrawMeshes==true) {
             oneRibbon->second.drawMesh(drawColor
                                        , pfMinThickness, pfMaxThickness
+                                       , pfGlobalPointsDivider
                                        , pfRibbonEffectLevel, pfRibbonIdxPointsDivider, pfRibbonTimeDivider);
         }
         
@@ -86,7 +88,10 @@ void hospitalRibbonsManager::draw(){
         if (pbDrawCurves==true) {
             ofColor oppositColor = drawColor;
             oppositColor.setHueAngle(drawColor.getHueAngle() + 180);
-            oneRibbon->second.drawShape(oppositColor);
+            oneRibbon->second.drawShape(oppositColor
+                                        , pfMinThickness, pfMaxThickness
+                                        , pfGlobalPointsDivider
+                                        , pfRibbonEffectLevel, pfRibbonIdxPointsDivider, pfRibbonTimeDivider);
         }
         
     }
