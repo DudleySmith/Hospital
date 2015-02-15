@@ -45,13 +45,37 @@ private:
     ofParameter<float>   pfMinThickness;
     ofParameter<float>   pfMaxThickness;    
     
-    ofParameter<int> pfGlobalPointsDivider;
-    ofParameter<float> pfRibbonEffectLevel;
-    ofParameter<float> pfRibbonIdxPointsDivider;
-    ofParameter<float> pfRibbonTimeDivider;
+    ofParameterGroup   pgRibbon1;
+    ofParameter<bool>  pbDrawRibbon1;
+    ofParameter<int>   pfRibbon1GlobalPointsDivider;
+    ofParameter<float> pfRibbon1EffectLevel;
+    ofParameter<float> pfRibbon1IdxPointsDivider;
+    ofParameter<float> pfRibbon1TimeDivider;
+    
+    ofParameterGroup   pgRibbon2;
+    ofParameter<bool>  pbDrawRibbon2;
+    ofParameter<int>   pfRibbon2GlobalPointsDivider;
+    ofParameter<float> pfRibbon2EffectLevel;
+    ofParameter<float> pfRibbon2IdxPointsDivider;
+    ofParameter<float> pfRibbon2TimeDivider;
+    
+    ofParameterGroup   pgRibbon3;
+    ofParameter<bool>  pbDrawRibbon3;
+    ofParameter<int>   pfRibbon3GlobalPointsDivider;
+    ofParameter<float> pfRibbon3EffectLevel;
+    ofParameter<float> pfRibbon3IdxPointsDivider;
+    ofParameter<float> pfRibbon3TimeDivider;
+    
+    ofParameterGroup   pgRibbon4;
+    ofParameter<bool>  pbDrawRibbon4;
+    ofParameter<int>   pfRibbon4GlobalPointsDivider;
+    ofParameter<float> pfRibbon4EffectLevel;
+    ofParameter<float> pfRibbon4IdxPointsDivider;
+    ofParameter<float> pfRibbon4TimeDivider;
     
     
 public:
     ofParameterGroup parameters;
+    ofParameterGroup parametersFx;
 
 };

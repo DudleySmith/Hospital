@@ -43,6 +43,7 @@ class ofApp : public ofBaseApp{
     ofParameter<int> psPort;
 
     ofxPanel plRibbons;
+    ofxPanel plRibbonsFx;
     
     bool mDrawGui;
     

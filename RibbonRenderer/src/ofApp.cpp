@@ -31,10 +31,15 @@ void ofApp::setup(){
     ribbonManager.parameters.setName("ribbons");
     plRibbons.setup(ribbonManager.parameters, "ribbons.xml");
     plRibbons.loadFromFile("ribbons.xml");
+    // Ribbon panel
+    ribbonManager.parametersFx.setName("ribbonsFx");
+    plRibbonsFx.setup(ribbonManager.parametersFx, "ribbonsFx.xml");
+    plRibbonsFx.loadFromFile("ribbonsFx.xml");
     
     // Positions
     plRibbons.setPosition(25, 25);
-    plOsc.setPosition(275, 25);
+    plRibbonsFx.setPosition(275, 25);
+    plOsc.setPosition(525, 25);
     
     mDrawGui = false;
     
@@ -74,6 +79,7 @@ void ofApp::draw(){
     if(mDrawGui){
         plOsc.draw();
         plRibbons.draw();
+        plRibbonsFx.draw();
         ofDrawBitmapString("Ribbons count=" + ribbonManager.countMessage(), ofPoint(25, ofGetHeight() - 25));
     }
     

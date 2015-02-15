@@ -1,0 +1,25 @@
+<ribbonsFx>
+	<group>
+		<ribbon1globalPointDiv>2</ribbon1globalPointDiv>
+		<ribbon1FxLevel>16.3265</ribbon1FxLevel>
+		<ribbon1IdxDivider>14.6837</ribbon1IdxDivider>
+		<ribbon1TimeDivide>1.59694</ribbon1TimeDivide>
+		<ribbon2GlobalPointDiv>4</ribbon2GlobalPointDiv>
+		<ribbon2FxLevel>25.5102</ribbon2FxLevel>
+		<ribbon2IdxDivider>20</ribbon2IdxDivider>
+		<ribbon2TimeDivide>2</ribbon2TimeDivide>
+		<ribbon3GlobalPointDiv>2</ribbon3GlobalPointDiv>
+		<ribbon3FxLevel>50</ribbon3FxLevel>
+		<ribbon3IdxDivider>124.153</ribbon3IdxDivider>
+		<ribbon3TimeDivide>7.75</ribbon3TimeDivide>
+	<drawRibbon1>1</drawRibbon1>
+		<drawRibbon2>1</drawRibbon2>
+		<drawRibbon3>1</drawRibbon3>
+		<drawRibbon4>1</drawRibbon4>
+		<ribbon4GlobalPointDiv>2</ribbon4GlobalPointDiv>
+		<ribbon4FxLevel>118.367</ribbon4FxLevel>
+		<ribbon4IdxDivider>150</ribbon4IdxDivider>
+		<ribbon4TimeDivide>7.97959</ribbon4TimeDivide>
+	</group>
+<ribbonsFx/>
+</ribbonsFx>

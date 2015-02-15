@@ -21,10 +21,34 @@ hospitalRibbonsManager::hospitalRibbonsManager(){
     parameters.add(pfMinThickness.set("minThickness", 2, 0, 50));
     parameters.add(pfMaxThickness.set("maxThickness", 20, 0, 50));
     
-    parameters.add(pfGlobalPointsDivider.set("globalPointDiv", 5, 1, 10));
-    parameters.add(pfRibbonEffectLevel.set("ribbonFxLevel", 50, 0, 200));
-    parameters.add(pfRibbonIdxPointsDivider.set("ribbonIdxDivider", 20, 1, 150));
-    parameters.add(pfRibbonTimeDivider.set("ribbonTimeDivide", 2, 1, 10));
+    pgRibbon1.add(pbDrawRibbon1.set("drawRibbon1", true));
+    pgRibbon1.add(pfRibbon1GlobalPointsDivider.set("ribbon1globalPointDiv", 5, 1, 10));
+    pgRibbon1.add(pfRibbon1EffectLevel.set("ribbon1FxLevel", 50, 0, 200));
+    pgRibbon1.add(pfRibbon1IdxPointsDivider.set("ribbon1IdxDivider", 20, 1, 150));
+    pgRibbon1.add(pfRibbon1TimeDivider.set("ribbon1TimeDivide", 2, 1, 10));
+    parametersFx.add(pgRibbon1);
+    
+    pgRibbon2.add(pbDrawRibbon2.set("drawRibbon2", true));
+    pgRibbon2.add(pfRibbon2GlobalPointsDivider.set("ribbon2GlobalPointDiv", 5, 1, 10));
+    pgRibbon2.add(pfRibbon2EffectLevel.set("ribbon2FxLevel", 50, 0, 200));
+    pgRibbon2.add(pfRibbon2IdxPointsDivider.set("ribbon2IdxDivider", 20, 1, 150));
+    pgRibbon2.add(pfRibbon2TimeDivider.set("ribbon2TimeDivide", 2, 1, 10));
+    parametersFx.add(pgRibbon2);
+    
+    pgRibbon3.add(pbDrawRibbon3.set("drawRibbon3", true));
+    pgRibbon3.add(pfRibbon3GlobalPointsDivider.set("ribbon3GlobalPointDiv", 5, 1, 10));
+    pgRibbon3.add(pfRibbon3EffectLevel.set("ribbon3FxLevel", 50, 0, 200));
+    pgRibbon3.add(pfRibbon3IdxPointsDivider.set("ribbon3IdxDivider", 20, 1, 150));
+    pgRibbon3.add(pfRibbon3TimeDivider.set("ribbon3TimeDivide", 2, 1, 10));
+    parametersFx.add(pgRibbon3);
+    
+    pgRibbon4.add(pbDrawRibbon4.set("drawRibbon4", true));
+    pgRibbon4.add(pfRibbon4GlobalPointsDivider.set("ribbon4GlobalPointDiv", 5, 1, 10));
+    pgRibbon4.add(pfRibbon4EffectLevel.set("ribbon4FxLevel", 50, 0, 200));
+    pgRibbon4.add(pfRibbon4IdxPointsDivider.set("ribbon4IdxDivider", 20, 1, 150));
+    pgRibbon4.add(pfRibbon4TimeDivider.set("ribbon4TimeDivide", 2, 1, 10));
+    parametersFx.add(pgRibbon4);
+    
 }
 
 // -------------------------------------------------------------------------------------------
@@ -78,11 +102,32 @@ void hospitalRibbonsManager::draw(){
 
         // Draw some meshes if you can
         if (pbDrawMeshes==true) {
-            oneRibbon->second.drawMesh(drawColor
-                                       , pfMinThickness, pfMaxThickness
-                                       , pfGlobalPointsDivider
-                                       , pfRibbonEffectLevel, pfRibbonIdxPointsDivider, pfRibbonTimeDivider);
+            if (pbDrawRibbon1) {
+                oneRibbon->second.drawMesh(drawColor
+                                           , pfMinThickness, pfMaxThickness
+                                           , pfRibbon1GlobalPointsDivider
+                                           , pfRibbon1EffectLevel, pfRibbon1IdxPointsDivider, pfRibbon1TimeDivider);
+            }
+            if (pbDrawRibbon2) {
+                oneRibbon->second.drawMesh(drawColor
+                                           , pfMinThickness, pfMaxThickness
+                                           , pfRibbon2GlobalPointsDivider
+                                           , pfRibbon2EffectLevel, pfRibbon2IdxPointsDivider, pfRibbon2TimeDivider);
+            }
+            if (pbDrawRibbon3) {
+                oneRibbon->second.drawMesh(drawColor
+                                           , pfMinThickness, pfMaxThickness
+                                           , pfRibbon3GlobalPointsDivider
+                                           , pfRibbon3EffectLevel, pfRibbon3IdxPointsDivider, pfRibbon3TimeDivider);
+            }
+            if (pbDrawRibbon4) {
+                oneRibbon->second.drawMesh(drawColor
+                                           , pfMinThickness, pfMaxThickness
+                                           , pfRibbon4GlobalPointsDivider
+                                           , pfRibbon4EffectLevel, pfRibbon4IdxPointsDivider, pfRibbon4TimeDivider);
+            }
         }
+        
         
         // Draw some curves in opposite color
         if (pbDrawCurves==true) {
@@ -90,8 +135,8 @@ void hospitalRibbonsManager::draw(){
             oppositColor.setHueAngle(drawColor.getHueAngle() + 180);
             oneRibbon->second.drawShape(oppositColor
                                         , pfMinThickness, pfMaxThickness
-                                        , pfGlobalPointsDivider
-                                        , pfRibbonEffectLevel, pfRibbonIdxPointsDivider, pfRibbonTimeDivider);
+                                        , pfRibbon1GlobalPointsDivider
+                                        , pfRibbon1EffectLevel, pfRibbon1IdxPointsDivider, pfRibbon1TimeDivider);
         }
         
     }
