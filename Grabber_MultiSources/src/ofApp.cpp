@@ -38,6 +38,10 @@ void ofApp::setup(){
     grabberPanel.setPosition(1000, 550);
     cameraPanel.setPosition(1000, 550);
     
+    string title = "Grabber - ";
+    title += m_pPrefix;
+    ofSetWindowTitle(title);
+    
 }
 
 //--------------------------------------------------------------

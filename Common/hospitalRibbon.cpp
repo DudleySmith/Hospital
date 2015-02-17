@@ -11,13 +11,19 @@
 //--------------------------------------------------------------
 void hospitalRibbon::update(float _dnSpeed){
     
-    for(unsigned int i = 0; i < points.size(); i++){
-        points[i].z -= _dnSpeed;
-        //sumOfAllPoints += points[i];
+    for(unsigned int i = 0; i < mPoints.size(); i++){
+        mPoints[i].z -= _dnSpeed;
+        //sumOfAllPoints += mPoints[i];
     }
     
 }
 
+//--------------------------------------------------------------
+void hospitalRibbon::drawCamText(){
+    if(mPoints.size()>0){
+        ofDrawBitmapString(mCam, mPoints[mPoints.size()-1]);
+    }
+}
 
 //--------------------------------------------------------------
 void hospitalRibbon::drawShape(ofColor _color
@@ -34,13 +40,13 @@ void hospitalRibbon::drawShape(ofColor _color
     //do the same thing from the first example...
     ofBeginShape();
     
-    for(unsigned int i = 1; i < points.size(); i++){
+    for(unsigned int i = 1; i < mPoints.size(); i++){
         
-        if(i==1 || i==(points.size()-1) || (i%globalPointsDiv == 1)){
+        if(i==1 || i==(mPoints.size()-1) || (i%globalPointsDiv == 1)){
             
         //find this point and the next point
-        ofPoint thisPoint = points[i-1];
-        ofPoint nextPoint = points[i];
+        ofPoint thisPoint = mPoints[i-1];
+        ofPoint nextPoint = mPoints[i];
         
         //get the direction from one to the next.
         //the ribbon should fan out from this direction
@@ -66,7 +72,7 @@ void hospitalRibbon::drawShape(ofColor _color
         //float thickness = ofMap(distance, 0, 60, 20, 2, true);
         
         // thickness depend on distance between point -> brush effect
-        float pointRatio = (float)i / (float)points.size();
+        float pointRatio = (float)i / (float)mPoints.size();
         float pointRatioInv = 1 - pointRatio;
         float thickness = ofMap(pointRatio*pointRatio, 0, 1, _minThickness, _maxThickness, true);
         
@@ -78,8 +84,8 @@ void hospitalRibbon::drawShape(ofColor _color
         ofPoint leftPoint = thisPoint+toTheLeft*thickness+toTheLeft*ribbonEffect;
         ofPoint rightPoint = thisPoint+toTheRight*thickness+toTheLeft*ribbonEffect;
         
-        //add these points to the triangle strip
-            if (i==(points.size()-1)) {
+        //add these mPoints to the triangle strip
+            if (i==(mPoints.size()-1)) {
                 ofVertex(leftPoint);
             }else{
                 ofCurveVertex(leftPoint);
@@ -112,11 +118,11 @@ void hospitalRibbon::drawMesh(ofColor _color
     ofMesh mesh;
     mesh.setMode(OF_PRIMITIVE_TRIANGLE_STRIP);
     
-    for(unsigned int i = 1; i < points.size(); i++){
-        if(i==1 || i==(points.size()-1) || (i%globalPointsDiv == 1)){
+    for(unsigned int i = 1; i < mPoints.size(); i++){
+        if(i==1 || i==(mPoints.size()-1) || (i%globalPointsDiv == 1)){
         //find this point and the next point
-        ofPoint thisPoint = points[i-1];
-        ofPoint nextPoint = points[i];
+        ofPoint thisPoint = mPoints[i-1];
+        ofPoint nextPoint = mPoints[i];
         
         //get the direction from one to the next.
         //the ribbon should fan out from this direction
@@ -141,11 +147,11 @@ void hospitalRibbon::drawMesh(ofColor _color
         //float thickness = ofMap(distance, 0, 60, 20, 2, true);
         
         // thickness depend on distance between point -> brush effect
-        float pointRatio = (float)i / (float)points.size();
+        float pointRatio = (float)i / (float)mPoints.size();
         float pointRatioInv = 1 - pointRatio;
         float thickness = ofMap(pointRatio*pointRatio, 0, 1, _minThickness, _maxThickness, true);
         
-        //calculate the points to the left and to the right
+        //calculate the mPoints to the left and to the right
         //by extending the current point in the direction of left/right by the length
         float ribbonPhase = (float)i / _ribbonIdxPointsDivider + ofGetElapsedTimef() / _ribbonTimeDivider;
         float ribbonEffect = pointRatioInv*_ribbonEffectLevel*sin(ribbonPhase*TWO_PI);
@@ -153,7 +159,7 @@ void hospitalRibbon::drawMesh(ofColor _color
         ofPoint leftPoint = thisPoint+toTheLeft*thickness+toTheLeft*ribbonEffect;
         ofPoint rightPoint = thisPoint+toTheRight*thickness+toTheLeft*ribbonEffect;
         
-        //add these points to the triangle strip
+        //add these mPoints to the triangle strip
         mesh.addVertex(ofPoint(leftPoint.x, leftPoint.y, leftPoint.z));
         mesh.addVertex(ofPoint(rightPoint.x, rightPoint.y, rightPoint.z));
         }
@@ -167,9 +173,29 @@ void hospitalRibbon::drawMesh(ofColor _color
 }
 
 //--------------------------------------------------------------
-void hospitalRibbon::addPoint(ofPoint _p){
+void hospitalRibbon::addPoint(ofPoint _p, string _cam){
     
-    points.push_back(_p);
+    mPoints.push_back(_p);
     mTimeStampf = ofGetElapsedTimef();
+    mCam = _cam;
     
+}
+
+//--------------------------------------------------------------
+bool hospitalRibbon::IsThereAPointNearToMe(ofPoint _p){
+    
+    vector<ofPoint>::iterator onePoint;
+    for (onePoint = mPoints.begin(); onePoint != mPoints.end(); onePoint++) {
+        if (_p.distance(*onePoint) >= 10) {
+            return true;
+        }
+    }
+    return false;
+    /*
+    if(ofRandomf()>0.9){
+        return true;
+    }else{
+        return false;
+    }
+     */
 }

@@ -18,6 +18,7 @@ public:
     
 private:
     map<string, hospitalRibbon> mRibbons;
+    vector<ofPoint> mMeetings;
     
     void addRibbon(hospitalRibbon _r);
     void addPointToRibbon(hospitalRibbon _r, ofPoint _p);
@@ -27,10 +28,12 @@ private:
 public:
     void newPoint(hospitalPoint _hp);
     
+    void setup();
     void update();
     void draw();
     
     string countMessage(){return ofToString(mRibbons.size());};
+    vector<ofPoint> getMeetingPoints(){return mMeetings;};
     
 private:
     // Parameters
@@ -77,5 +80,12 @@ private:
 public:
     ofParameterGroup parameters;
     ofParameterGroup parametersFx;
+    
+    // OSC --------------------------------------
+    ofxOscReceiver oscReceiver;
+    
+    ofParameterGroup pgOsc;
+    ofParameter<int> psPort;
+
 
 };

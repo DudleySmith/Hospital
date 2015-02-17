@@ -18,10 +18,12 @@ class hospitalPoint {
     ofPoint mVelocity;
     float mAngle;
     float mRadius;
+    string mCam;
     
 public:
     ofPoint getPosition(){return mPosition;};
     string getId(){return mID;};
+    string getCam(){return mCam;};
     
 public:
     void update(ofxOscMessage m);

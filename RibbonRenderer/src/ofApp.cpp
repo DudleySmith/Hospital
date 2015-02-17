@@ -24,9 +24,8 @@ void ofApp::setup(){
     
     // Setup Panels -------------------------
     // Osc panel
-    plOsc.setup("osc", "main.xml");
-    plOsc.add(psPort.set("Port", 1551, 999, 9999));
-    plOsc.loadFromFile("main.xml");
+    plOsc.setup(ribbonManager.pgOsc, "osc.xml");
+    plOsc.loadFromFile("osc.xml");
     // Ribbon panel
     ribbonManager.parameters.setName("ribbons");
     plRibbons.setup(ribbonManager.parameters, "ribbons.xml");
@@ -43,38 +42,24 @@ void ofApp::setup(){
     
     mDrawGui = false;
     
-    // listen on the given port
-    cout << "listening for osc messages on port " << psPort << "\n";
-    receiver.setup(psPort);
-    
-    
+    // Setup receiver
+    ribbonManager.setup();
 }
 
 //--------------------------------------------------------------
 void ofApp::update(){
-    
-    
-    // check for waiting messages
-    while(receiver.hasWaitingMessages()){
-        // get the next message
-        ofxOscMessage m;
-        receiver.getNextMessage(&m);
-        
-        if (hospitalMessage::isOk(m)) {
-            hospitalPoint point;
-            point.update(m);
-            ribbonManager.newPoint(point);
-        }
-    }
-        
     ribbonManager.update();
+    
+    pictureManager.setPicturePositions(ribbonManager.getMeetingPoints());
+    pictureManager.update();
+    
 }
 
 //--------------------------------------------------------------
 void ofApp::draw(){
     
     ribbonManager.draw();
-    
+    pictureManager.draw();
     
     if(mDrawGui){
         plOsc.draw();
@@ -82,8 +67,6 @@ void ofApp::draw(){
         plRibbonsFx.draw();
         ofDrawBitmapString("Ribbons count=" + ribbonManager.countMessage(), ofPoint(25, ofGetHeight() - 25));
     }
-    
-    
     
 }
 

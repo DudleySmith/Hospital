@@ -22,6 +22,17 @@ void hospitalPoint::update(ofxOscMessage m){
         mAngle = hospitalMessage::getAngle(m);
         mRadius = hospitalMessage::getRadius(m);
         
+        vector<string> adresses = ofSplitString(m.getAddress(), "/");
+        if (adresses.size() > 1) {
+            if (adresses[1].length() > 0) {
+                mCam = adresses[1];
+            }else{
+                mCam = "emptyCam";
+            }
+        }else{
+            mCam = "emptyCam";
+        }
+        
     }
     
 }

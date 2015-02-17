@@ -49,28 +49,66 @@ hospitalRibbonsManager::hospitalRibbonsManager(){
     pgRibbon4.add(pfRibbon4TimeDivider.set("ribbon4TimeDivide", 2, 1, 10));
     parametersFx.add(pgRibbon4);
     
+    pgOsc.add(psPort.set("Port", 1551, 999, 9999));
+    
+}
+
+// -------------------------------------------------------------------------------------------
+void hospitalRibbonsManager::setup(){
+    // listen on the given port
+    cout << "listening for osc messages on port " << psPort << "\n";
+    oscReceiver.setup(psPort);
 }
 
 // -------------------------------------------------------------------------------------------
 void hospitalRibbonsManager::newPoint(hospitalPoint _hp){
     
-    string keyId = _hp.getId();
+    string keyId = _hp.getCam() + "_" + _hp.getId();
     map<string, hospitalRibbon>::iterator ribbon = mRibbons.find(keyId);
     
     if(ribbon!=mRibbons.end()){
         // Found, update
-        ribbon->second.addPoint(_hp.getPosition());
+        ribbon->second.addPoint(_hp.getPosition(), _hp.getCam());
     }else{
         // Not Found, create and add
         hospitalRibbon newRibbon;
-        newRibbon.addPoint(_hp.getPosition());
+        newRibbon.addPoint(_hp.getPosition(), _hp.getCam());
         mRibbons[keyId] = newRibbon;
+    }
+    
+    // Check in other positions
+    map<string, hospitalRibbon>::iterator meetings;
+    for(meetings = mRibbons.begin(); meetings != mRibbons.end(); meetings++){
+        
+        // Not the same cam !
+        if(meetings->second.getCam() != _hp.getCam()){
+            
+            // Get something if we meet some other
+            if (meetings->second.IsThereAPointNearToMe(_hp.getPosition())) {
+                mMeetings.push_back(_hp.getPosition());
+            }
+            
+        }
     }
     
 }
 
 // -------------------------------------------------------------------------------------------
 void hospitalRibbonsManager::update(){
+    
+    // check for waiting messages
+    while(oscReceiver.hasWaitingMessages()){
+        // get the next message
+        ofxOscMessage m;
+        oscReceiver.getNextMessage(&m);
+        
+        if (hospitalMessage::isOk(m)) {
+            hospitalPoint point;
+            point.update(m);
+            newPoint(point);
+        }
+    }
+    
     map<string, hospitalRibbon>::iterator oneRibbon;
     for (oneRibbon=mRibbons.begin(); oneRibbon!=mRibbons.end(); oneRibbon++) {
         // if remaining movement
@@ -95,6 +133,9 @@ void hospitalRibbonsManager::draw(){
     
     map<string, hospitalRibbon>::iterator oneRibbon;
     for (oneRibbon=mRibbons.begin(); oneRibbon!=mRibbons.end(); oneRibbon++) {
+        
+        oneRibbon->second.drawCamText();
+        
         // Calculating ratio based on last move time
         float ratio = ofClamp((ofGetElapsedTimef() - oneRibbon->second.getTimeStampf())/pfFadeTime, 0, 1);
         // Fade to background

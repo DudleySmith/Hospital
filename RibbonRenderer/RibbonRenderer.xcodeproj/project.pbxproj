@@ -34,6 +34,7 @@
 		EA53C31D1A8C931C00BBEEA5 /* ofxSlider.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA53C3121A8C931C00BBEEA5 /* ofxSlider.cpp */; };
 		EA53C31E1A8C931C00BBEEA5 /* ofxSliderGroup.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA53C3141A8C931C00BBEEA5 /* ofxSliderGroup.cpp */; };
 		EA53C31F1A8C931C00BBEEA5 /* ofxToggle.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA53C3161A8C931C00BBEEA5 /* ofxToggle.cpp */; };
+		EA7E1D291A936B7300DBFC78 /* hospitalPictureManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EA7E1D271A936B7300DBFC78 /* hospitalPictureManager.cpp */; };
 		EAD7A10D1A8B82E200C46253 /* hospitalRibbonsManager.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAD7A10B1A8B82E200C46253 /* hospitalRibbonsManager.cpp */; };
 		EAFE47D11A8AB53E003E8EA2 /* hospitalMessage.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAFE47CD1A8AB53E003E8EA2 /* hospitalMessage.cpp */; };
 		EAFE47D21A8AB53E003E8EA2 /* hospitalPoint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = EAFE47CF1A8AB53E003E8EA2 /* hospitalPoint.cpp */; };
@@ -125,6 +126,8 @@
 		EA53C3151A8C931C00BBEEA5 /* ofxSliderGroup.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxSliderGroup.h; sourceTree = "<group>"; };
 		EA53C3161A8C931C00BBEEA5 /* ofxToggle.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxToggle.cpp; sourceTree = "<group>"; };
 		EA53C3171A8C931C00BBEEA5 /* ofxToggle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxToggle.h; sourceTree = "<group>"; };
+		EA7E1D271A936B7300DBFC78 /* hospitalPictureManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hospitalPictureManager.cpp; sourceTree = "<group>"; };
+		EA7E1D281A936B7300DBFC78 /* hospitalPictureManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hospitalPictureManager.h; sourceTree = "<group>"; };
 		EAD7A10B1A8B82E200C46253 /* hospitalRibbonsManager.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hospitalRibbonsManager.cpp; sourceTree = "<group>"; };
 		EAD7A10C1A8B82E200C46253 /* hospitalRibbonsManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = hospitalRibbonsManager.h; sourceTree = "<group>"; };
 		EAFE47CD1A8AB53E003E8EA2 /* hospitalMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = hospitalMessage.cpp; sourceTree = "<group>"; };
@@ -328,6 +331,8 @@
 				EAFE47D41A8AB580003E8EA2 /* hospitalRibbon.h */,
 				EAD7A10B1A8B82E200C46253 /* hospitalRibbonsManager.cpp */,
 				EAD7A10C1A8B82E200C46253 /* hospitalRibbonsManager.h */,
+				EA7E1D271A936B7300DBFC78 /* hospitalPictureManager.cpp */,
+				EA7E1D281A936B7300DBFC78 /* hospitalPictureManager.h */,
 			);
 			name = Common;
 			path = ../Common;
@@ -536,6 +541,7 @@
 				EAFE480D1A8AB715003E8EA2 /* ofxOscReceiver.cpp in Sources */,
 				EAFE48051A8AB715003E8EA2 /* UdpSocketWin.cpp in Sources */,
 				EAFE480E1A8AB715003E8EA2 /* ofxOscSender.cpp in Sources */,
+				EA7E1D291A936B7300DBFC78 /* hospitalPictureManager.cpp in Sources */,
 				EAFE47D11A8AB53E003E8EA2 /* hospitalMessage.cpp in Sources */,
 				EAFE48081A8AB715003E8EA2 /* OscReceivedElements.cpp in Sources */,
 				EAFE480A1A8AB715003E8EA2 /* ofxOscBundle.cpp in Sources */,

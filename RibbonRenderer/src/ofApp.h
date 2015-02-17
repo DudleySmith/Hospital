@@ -15,6 +15,7 @@
 #include "ofxGui.h"
 
 #include "hospitalRibbonsManager.h"
+#include "hospitalPictureManager.h"
 #include "hospitalPoint.h"
 
 class ofApp : public ofBaseApp{
@@ -36,12 +37,10 @@ class ofApp : public ofBaseApp{
 	
 	//this holds all of our points
     hospitalRibbonsManager ribbonManager;
-
-    ofxOscReceiver receiver;
+    // This display the pictures
+    hospitalPictureManager pictureManager;
     
     ofxPanel plOsc;
-    ofParameter<int> psPort;
-
     ofxPanel plRibbons;
     ofxPanel plRibbonsFx;
     
