@@ -13,7 +13,7 @@
 class hospitalRibbon {
 
     vector<ofPoint> mPoints;
-    string mId;
+    string mBlobId;
     string mCam;
     
     float mTimeStampf;
@@ -21,9 +21,10 @@ class hospitalRibbon {
 public:
     float getTimeStampf(){return mTimeStampf;};
     string getCam(){return mCam;};
+    string getBlobId(){return mBlobId;};
     
 public:
-    void addPoint(ofPoint _point, string _cam);
+    void addPoint(ofPoint _point, string _cam, string _blobId);
     void update(float _dnSpeed);
     
     void drawCamText();
@@ -38,6 +39,6 @@ public:
                   , int globalPointsDiv
                   , float _ribbonEffectLevel, float _ribbonIdxPointsDivider, float _ribbonTimeDivider);
     
-    bool IsThereAPointNearToMe(ofPoint _p);
+    bool IsThereAPointNearToMe(ofPoint _p, float _matchingDistance);
     
 };

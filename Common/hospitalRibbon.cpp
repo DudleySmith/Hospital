@@ -173,20 +173,22 @@ void hospitalRibbon::drawMesh(ofColor _color
 }
 
 //--------------------------------------------------------------
-void hospitalRibbon::addPoint(ofPoint _p, string _cam){
+void hospitalRibbon::addPoint(ofPoint _p, string _cam, string _blobId){
     
     mPoints.push_back(_p);
     mTimeStampf = ofGetElapsedTimef();
     mCam = _cam;
+    mBlobId = _blobId;
     
 }
 
 //--------------------------------------------------------------
-bool hospitalRibbon::IsThereAPointNearToMe(ofPoint _p){
+bool hospitalRibbon::IsThereAPointNearToMe(ofPoint _p, float _matchingDistance){
     
     vector<ofPoint>::iterator onePoint;
     for (onePoint = mPoints.begin(); onePoint != mPoints.end(); onePoint++) {
-        if (_p.distance(*onePoint) >= 10) {
+        if (_p.distance(*onePoint) <= _matchingDistance) {
+            ofLogVerbose() << "Match Distance";
             return true;
         }
     }

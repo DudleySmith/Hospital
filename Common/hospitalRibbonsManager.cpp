@@ -20,6 +20,8 @@ hospitalRibbonsManager::hospitalRibbonsManager(){
     parameters.add(pfDownSpeed.set("downSpeed", 0.5, 0, 10));
     parameters.add(pfMinThickness.set("minThickness", 2, 0, 50));
     parameters.add(pfMaxThickness.set("maxThickness", 20, 0, 50));
+    parameters.add(pfMatchingDistance.set("matchingDistance", 100, 0, 500));
+    
     
     pgRibbon1.add(pbDrawRibbon1.set("drawRibbon1", true));
     pgRibbon1.add(pfRibbon1GlobalPointsDivider.set("ribbon1globalPointDiv", 5, 1, 10));
@@ -63,16 +65,16 @@ void hospitalRibbonsManager::setup(){
 // -------------------------------------------------------------------------------------------
 void hospitalRibbonsManager::newPoint(hospitalPoint _hp){
     
-    string keyId = _hp.getCam() + "_" + _hp.getId();
+    string keyId = _hp.getCam() + "_" + _hp.getBlobId();
     map<string, hospitalRibbon>::iterator ribbon = mRibbons.find(keyId);
     
     if(ribbon!=mRibbons.end()){
         // Found, update
-        ribbon->second.addPoint(_hp.getPosition(), _hp.getCam());
+        ribbon->second.addPoint(_hp.getPosition(), _hp.getCam(), _hp.getBlobId());
     }else{
         // Not Found, create and add
         hospitalRibbon newRibbon;
-        newRibbon.addPoint(_hp.getPosition(), _hp.getCam());
+        newRibbon.addPoint(_hp.getPosition(), _hp.getCam(), _hp.getBlobId());
         mRibbons[keyId] = newRibbon;
     }
     
@@ -81,11 +83,16 @@ void hospitalRibbonsManager::newPoint(hospitalPoint _hp){
     for(meetings = mRibbons.begin(); meetings != mRibbons.end(); meetings++){
         
         // Not the same cam !
-        if(meetings->second.getCam() != _hp.getCam()){
+        if(meetings->second.getBlobId() != _hp.getBlobId() || (meetings->second.getBlobId()==_hp.getBlobId() && meetings->second.getCam() != _hp.getCam())){
             
             // Get something if we meet some other
-            if (meetings->second.IsThereAPointNearToMe(_hp.getPosition())) {
+            if (meetings->second.IsThereAPointNearToMe(_hp.getPosition(), pfMatchingDistance)) {
+                
+                ofLogVerbose() << "Ribbon Cam:" << meetings->second.getCam() << " Id:" << meetings->second.getBlobId();
+                ofLogVerbose() << "Point Cam:" << _hp.getCam() << " Id:" << _hp.getBlobId();
+                
                 mMeetings.push_back(_hp.getPosition());
+                
             }
             
         }

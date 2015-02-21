@@ -13,7 +13,7 @@ void hospitalPoint::update(ofxOscMessage m){
     
     if(hospitalMessage::isOk(m) == true){
         
-        mID = hospitalMessage::getID(m);
+        mBlobId = hospitalMessage::getID(m);
         
         mPosition = hospitalMessage::getPosition(m);
         mPosition *= ofPoint(ofGetWidth(), ofGetHeight());
@@ -50,7 +50,7 @@ void hospitalPoint::draw(){
     
     ofCircle(ofPoint::zero(), mRadius);
     ofLine(ofPoint::zero(), mVelocity);
-    ofDrawBitmapString(mID, ofPoint::zero());
+    ofDrawBitmapString(mBlobId, ofPoint::zero());
     
     ofPopStyle();
     

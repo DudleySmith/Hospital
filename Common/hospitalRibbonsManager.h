@@ -34,6 +34,7 @@ public:
     
     string countMessage(){return ofToString(mRibbons.size());};
     vector<ofPoint> getMeetingPoints(){return mMeetings;};
+    void emptyMeetingPoints(){mMeetings.clear();};
     
 private:
     // Parameters
@@ -46,7 +47,8 @@ private:
     ofParameter<float>   pfFadeTime;
     ofParameter<float>   pfDownSpeed;
     ofParameter<float>   pfMinThickness;
-    ofParameter<float>   pfMaxThickness;    
+    ofParameter<float>   pfMaxThickness;
+    ofParameter<float>   pfMatchingDistance;
     
     ofParameterGroup   pgRibbon1;
     ofParameter<bool>  pbDrawRibbon1;

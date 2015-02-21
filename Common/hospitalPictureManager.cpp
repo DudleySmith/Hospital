@@ -19,6 +19,9 @@ void hospitalPictureManager::draw(){
     
     for (pos = mPicturePositions.begin(); pos != mPicturePositions.end(); pos++) {
         ofCircle(*pos, 25);
+        //mPicturePositions.erase(pos);
     }
+    
+    mPicturePositions.erase(mPicturePositions.begin(), mPicturePositions.end());
     
 }

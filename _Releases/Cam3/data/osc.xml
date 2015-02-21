@@ -3,5 +3,5 @@
 	<send>1</send>
 	<host>127.0.0.1</host>
 	<port>1551</port>
-	<prefix>cam1</prefix>
+	<prefix>cam3</prefix>
 </osc>

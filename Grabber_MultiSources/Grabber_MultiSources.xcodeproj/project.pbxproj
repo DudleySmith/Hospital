@@ -375,6 +375,7 @@
 		EAA59C341A56CB8E0005DD04 /* ofxBase3DVideo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxBase3DVideo.h; sourceTree = "<group>"; };
 		EAA59C351A56CB8E0005DD04 /* ofxKinect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ofxKinect.cpp; sourceTree = "<group>"; };
 		EAA59C361A56CB8E0005DD04 /* ofxKinect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ofxKinect.h; sourceTree = "<group>"; };
+		EACDE9F11A98C8BC00E9285A /* copyApp.sh */ = {isa = PBXFileReference; lastKnownFileType = text.script.sh; name = copyApp.sh; path = src/copyApp.sh; sourceTree = "<group>"; };
 		EADD1DAA1A929699002C4601 /* Grabber_MultiSources.app */ = {isa = PBXFileReference; lastKnownFileType = wrapper.application; name = Grabber_MultiSources.app; path = bin/Grabber_MultiSources.app; sourceTree = "<group>"; };
 		EAFE47981A895D97003E8EA2 /* hospitalMessage.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = hospitalMessage.cpp; path = Common/hospitalMessage.cpp; sourceTree = "<group>"; };
 		EAFE47991A895D97003E8EA2 /* hospitalMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = hospitalMessage.h; path = Common/hospitalMessage.h; sourceTree = "<group>"; };
@@ -553,6 +554,7 @@
 		E4B69B4A0A3A1720003C02F2 = {
 			isa = PBXGroup;
 			children = (
+				EACDE9F11A98C8BC00E9285A /* copyApp.sh */,
 				EADD1DAA1A929699002C4601 /* Grabber_MultiSources.app */,
 				EA85997A1A59C9A4002BFDB7 /* grabber.xml */,
 				EA85997C1A59C9A4002BFDB7 /* osc.xml */,
@@ -1485,6 +1487,7 @@
 					../../../addons/ofxCv/libs/ofxCv/include/src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MY_RELEASES_PATH = "\"/Volumes/Dude_Work/Code/_OF/0.8.4/apps/Hospital_OF/_Releases\"";
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",
@@ -1566,6 +1569,7 @@
 					../../../addons/ofxCv/libs/ofxCv/include/src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.6;
+				MY_RELEASES_PATH = "\"/Volumes/Dude_Work/Code/_OF/0.8.4/apps/Hospital_OF/_Releases\"";
 				OTHER_CPLUSPLUSFLAGS = (
 					"-D__MACOSX_CORE__",
 					"-lpthread",

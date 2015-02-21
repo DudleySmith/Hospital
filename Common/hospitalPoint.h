@@ -13,7 +13,7 @@
 
 class hospitalPoint {
     
-    string mID;
+    string mBlobId;
     ofPoint mPosition;
     ofPoint mVelocity;
     float mAngle;
@@ -22,7 +22,7 @@ class hospitalPoint {
     
 public:
     ofPoint getPosition(){return mPosition;};
-    string getId(){return mID;};
+    string getBlobId(){return mBlobId;};
     string getCam(){return mCam;};
     
 public:

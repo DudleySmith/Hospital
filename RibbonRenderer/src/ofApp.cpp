@@ -52,7 +52,7 @@ void ofApp::update(){
     
     pictureManager.setPicturePositions(ribbonManager.getMeetingPoints());
     pictureManager.update();
-    
+    ribbonManager.emptyMeetingPoints();
 }
 
 //--------------------------------------------------------------
