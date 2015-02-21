@@ -11,6 +11,7 @@
 #include "ofMain.h"
 #include "hospitalRibbon.h"
 #include "hospitalPoint.h"
+#include "hospitalMeetingPoint.h"
 
 class hospitalRibbonsManager {
 public:
@@ -18,7 +19,7 @@ public:
     
 private:
     map<string, hospitalRibbon> mRibbons;
-    vector<ofPoint> mMeetings;
+    map<string, hospitalMeetingPoint> mMeetings;
     
     void addRibbon(hospitalRibbon _r);
     void addPointToRibbon(hospitalRibbon _r, ofPoint _p);
@@ -33,7 +34,7 @@ public:
     void draw();
     
     string countMessage(){return ofToString(mRibbons.size());};
-    vector<ofPoint> getMeetingPoints(){return mMeetings;};
+    map<string, hospitalMeetingPoint> getMeetingPoints(){return mMeetings;};
     void emptyMeetingPoints(){mMeetings.clear();};
     
 private:

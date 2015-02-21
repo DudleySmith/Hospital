@@ -8,17 +8,20 @@
 
 #pragma once
 
+#define LIFE_TIME 5.0f
+
 #include "ofMain.h"
+#include "hospitalPicture.h"
 
 class hospitalPictureManager {
     
     bool mIsPictureActive;
-    vector<ofPoint> mPicturePositions;
+    map<string, hospitalPicture> mPicturePositions;
     
 public:
     void update();
     void draw();
     
-    void setPicturePositions(vector<ofPoint> _pp){mPicturePositions = _pp;};
+    void setPicturePositions(map<string, hospitalMeetingPoint> _pp);
     
 };

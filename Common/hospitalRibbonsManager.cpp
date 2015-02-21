@@ -91,7 +91,10 @@ void hospitalRibbonsManager::newPoint(hospitalPoint _hp){
                 ofLogVerbose() << "Ribbon Cam:" << meetings->second.getCam() << " Id:" << meetings->second.getBlobId();
                 ofLogVerbose() << "Point Cam:" << _hp.getCam() << " Id:" << _hp.getBlobId();
                 
-                mMeetings.push_back(_hp.getPosition());
+                hospitalMeetingPoint p;
+                p.setPos(_hp.getPosition());
+                p.setId(_hp.getBlobId() + "_" + meetings->second.getBlobId());
+                mMeetings[p.getId()] = p;
                 
             }
             
