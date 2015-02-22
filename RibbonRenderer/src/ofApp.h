@@ -13,6 +13,7 @@
 
 #include "ofMain.h"
 #include "ofxGui.h"
+#include "ofxColorSet.h"
 
 #include "hospitalRibbonsManager.h"
 #include "hospitalPictureManager.h"
@@ -44,7 +45,10 @@ class ofApp : public ofBaseApp{
     ofxPanel plRibbons;
     ofxPanel plRibbonsFx;
     ofxPanel plPictures;
+    ofxPanel plColorSet;
     
     bool mDrawGui;
+    
+    ofxColorSet colorSet;
     
 };

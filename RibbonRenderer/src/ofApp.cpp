@@ -37,6 +37,8 @@ void ofApp::setup(){
     // Pictures manager panel
     plPictures.setup(pictureManager.pgPictures, "pictures.xml");
     plPictures.loadFromFile("pictures.xml");
+    //Colors
+    plColorSet.setup(colorSet.m_oUI.m_gGroup);
     
     // Positions
     int idxPositionX = 0;
@@ -46,11 +48,17 @@ void ofApp::setup(){
     plRibbonsFx.setPosition(25 + stepPositionX*idxPositionX++, 25);
     plOsc.setPosition(25 + stepPositionX*idxPositionX++, 25);
     plPictures.setPosition(25 + stepPositionX*idxPositionX++, 25);
+    plColorSet.setPosition(25 + stepPositionX*idxPositionX++, 25);
     
     mDrawGui = false;
     
     // Setup receiver
     ribbonManager.setup();
+    pictureManager.setup();
+    
+    // ColorSet
+    colorSet.setup("camColors.xml");
+    
 }
 
 //--------------------------------------------------------------
@@ -65,14 +73,15 @@ void ofApp::update(){
 //--------------------------------------------------------------
 void ofApp::draw(){
     
-    ribbonManager.draw();
     pictureManager.draw();
+    ribbonManager.draw();
     
     if(mDrawGui){
         plOsc.draw();
         plRibbons.draw();
         plRibbonsFx.draw();
         plPictures.draw();
+        plColorSet.draw();
         ofDrawBitmapString("Ribbons count=" + ribbonManager.countMessage(), ofPoint(25, ofGetHeight() - 25));
     }
     

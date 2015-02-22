@@ -1,6 +1,6 @@
 <ribbons>
-	<background>0, 0, 0, 0</background>
-	<foreground>255, 255, 255, 255</foreground>
+	<background>0, 0, 0, 123</background>
+	<foreground>255, 255, 255, 134</foreground>
 	<drawCurves>0</drawCurves>
 	<drawMeshes>1</drawMeshes>
 	<fade>3</fade>
@@ -8,5 +8,11 @@
 	<minThickness>1.75</minThickness>
 	<maxThickness>7</maxThickness>
 <ribbons/>
-<matchingDistance>100</matchingDistance>
+<matchingDistance>17.5</matchingDistance>
+<drawDebug>0</drawDebug>
+<drawCircles>1</drawCircles>
+<nbCircles>5</nbCircles>
+	<circlesRadius>76.25</circlesRadius>
+	<circlesFreqDivider>3.925</circlesFreqDivider>
+	<circlesRadiusDephaser>0.465</circlesRadiusDephaser>
 </ribbons>

@@ -9,7 +9,16 @@
 #include "hospitalPicture.h"
 
 //---------------------------------------------------------------------------
-void hospitalPicture::draw(bool _drawDebug, bool _drawImage, string _path, float _resizeRatio){
+void hospitalPicture::setup(ofImage _image){
+    
+    if(_image.isAllocated()){
+        mImage = _image;
+    }
+    
+}
+
+//---------------------------------------------------------------------------
+void hospitalPicture::draw(bool _drawDebug, bool _drawImage){
     
     ofPushStyle();
     
@@ -18,21 +27,15 @@ void hospitalPicture::draw(bool _drawDebug, bool _drawImage, string _path, float
         ofDrawBitmapString(ofToString(getAscTimeRatio()), mPos);
     }
     
-    if (_drawImage) {
-        
-        ofImage imageToDraw;
-        imageToDraw.loadImage(_path);
-        imageToDraw.resize(_resizeRatio*imageToDraw.width, _resizeRatio*imageToDraw.height);
-        
+    if (_drawImage && mImage.isAllocated()) {
         ofSetColor(ofColor::white, 255*getAscTimeRatio());
         ofEnableAlphaBlending();
         
         ofPoint centerPos;
-        centerPos.set(mPos.x - 0.5f * (float)imageToDraw.width, mPos.y - 0.5f * (float)imageToDraw.height);
-        imageToDraw.draw(centerPos);
+        centerPos.set(mPos.x - 0.5f * (float)mImage.width, mPos.y - 0.5f * (float)mImage.height);
+        mImage.draw(centerPos);
         
         ofDisableAlphaBlending();
-        
     }
     
     ofPopStyle();

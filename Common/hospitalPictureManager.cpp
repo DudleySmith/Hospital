@@ -13,7 +13,7 @@ hospitalPictureManager::hospitalPictureManager(){
     
     pgPictures.add(pbDrawDebug.set("drawDebug", true));
     pgPictures.add(pbDrawImage.set("drawImage", true));
-    pgPictures.add(psPicturesPath.set("path", "/pictures"));
+    pgPictures.add(psPicturesPath.set("path", "pictures/"));
     pgPictures.add(pfFadeInInSec.set("fadeIn", 5, 0, 20));
     pgPictures.add(pfFadeOutInSec.set("fadeOur", 5, 0, 20));
     pgPictures.add(pfResizeRatio.set("resizeRatio", 0.25, 0, 1));
@@ -24,33 +24,66 @@ hospitalPictureManager::hospitalPictureManager(){
 // -------------------------------------------------------------------------------------------
 void hospitalPictureManager::setup(){
     
+    ofDirectory picturesDir;
+    
+    // List all pictures (only *.jpg allowed)
+    picturesDir.allowExt("jpg");
+    picturesDir.listDir(psPicturesPath);
+    picturesDir.sort();
+    
+    if (picturesDir.exists() && picturesDir.numFiles()>0) {
+        
+        // allocate the vector to have as many ofImages as files
+        ofLogVerbose() << "Assigning images";
+        mImages.assign(picturesDir.size(), ofImage());
+        
+        // you can now iterate through the files and load them into the ofImage vector
+        for(int i = 0; i < (int)picturesDir.size(); i++){
+            ofLogVerbose() << "Loading image : " << picturesDir.getPath(i);
+            mImages[i].loadImage(picturesDir.getPath(i));
+            mImages[i].resize(pfResizeRatio*mImages[i].width, pfResizeRatio*mImages[i].height);
+        }
+    }
 }
 
 // -------------------------------------------------------------------------------------------
 void hospitalPictureManager::update(){
-    
+
     map<string, hospitalPicture>::iterator pic;
     
-    for (pic = mPicturePositions.begin(); pic != mPicturePositions.end(); pic++) {
+    int idx = 0;
+    ofLogVerbose() << "Size of pictures map : " << mPicturePositions.size();
+    
+    pic = mPicturePositions.begin();
+    
+    while (pic != mPicturePositions.end()){
+        
         if(pic->second.getAscTimeRatio() >= 1.0f){
-            mPicturePositions.erase(pic);
+            //pic->second.mImage.clear();
+            mPicturePositions.erase(pic++);
+            ofLogVerbose() << "This image deleted : " << ofToString(idx);
+            ofLogVerbose() << "Size of pictures map : " << mPicturePositions.size();
+        }else{
+            ++pic;
         }
-    }
-
+        idx++;
+    };
+    
+    ofLogVerbose() << "Size of pictures map : " << mPicturePositions.size();
+ 
 }
 
 // -------------------------------------------------------------------------------------------
 void hospitalPictureManager::draw(){
     
+    map<string, hospitalPicture>::iterator pic;
+    
     ofPushStyle();
     ofNoFill();
     
-    map<string, hospitalPicture>::iterator pic;
-    
     for (pic = mPicturePositions.begin(); pic != mPicturePositions.end(); pic++) {
-        pic->second.draw(pbDrawDebug, pbDrawImage, "pictures/HiCulture_00.jpg", pfResizeRatio);
+            pic->second.draw(pbDrawDebug, pbDrawImage);
     }
-    
     ofPopStyle();
     
 }
@@ -73,6 +106,9 @@ void hospitalPictureManager::setPicturePositions(map<string, hospitalMeetingPoin
             if (mPicturePositions.size() < piNbImages) {
                 // No Pictures like this -> add it
                 hospitalPicture newPicture;
+                
+                newPicture.setup(getANewImage());
+                
                 newPicture.setFadeIn(pfFadeInInSec);
                 newPicture.setFadeOut(pfFadeOutInSec);
                 newPicture.setId(meetingPoint->second.getId());
@@ -86,5 +122,19 @@ void hospitalPictureManager::setPicturePositions(map<string, hospitalMeetingPoin
         
     }
     
+    
+}
+
+// -------------------------------------------------------------------------------------------
+ofImage hospitalPictureManager::getANewImage(){
+    
+    if (mImages.size() > 0) {
+        int rndIdx = ofRandom(0, mImages.size() - 1);
+        return mImages[rndIdx];
+        
+    }else{
+        return ofImage();
+        
+    }
     
 }

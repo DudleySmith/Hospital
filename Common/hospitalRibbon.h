@@ -29,6 +29,10 @@ public:
     
     void drawCamText();
     
+    void drawCircles(ofColor _color, float _maxThickness
+                     ,int _nbCircles, float _circlesRadius
+                     ,float _radiusDephaser, float _freqDivider);
+    
     void drawShape(ofColor _color
                 , float _minThickness, float _maxThickness
                 , int globalPointsDiv

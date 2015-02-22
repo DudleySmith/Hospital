@@ -15,6 +15,8 @@ hospitalRibbonsManager::hospitalRibbonsManager(){
     
     parameters.add(pbDrawCurves.set("drawCurves", false));
     parameters.add(pbDrawMeshes.set("drawMeshes", false));
+    parameters.add(pbDrawDebug.set("drawDebug", false));
+    parameters.add(pbDrawCircles.set("drawCircles", false));
     
     parameters.add(pfFadeTime.set("fade", 3, 0, 10));
     parameters.add(pfDownSpeed.set("downSpeed", 0.5, 0, 10));
@@ -22,6 +24,11 @@ hospitalRibbonsManager::hospitalRibbonsManager(){
     parameters.add(pfMaxThickness.set("maxThickness", 20, 0, 50));
     parameters.add(pfMatchingDistance.set("matchingDistance", 100, 0, 500));
     
+    
+    parameters.add(piNbCircles.set("nbCircles", 3, 0, 10));
+    parameters.add(pfCirclesRadius.set("circlesRadius", 50, 0, 250));
+    parameters.add(pfCirclesFreqDivider.set("circlesFreqDivider", 0.8, 0, 5));
+    parameters.add(pfCirclesRadiusDephaser.set("circlesRadiusDephaser", 0.25, 0, 3));
     
     pgRibbon1.add(pbDrawRibbon1.set("drawRibbon1", true));
     pgRibbon1.add(pfRibbon1GlobalPointsDivider.set("ribbon1globalPointDiv", 5, 1, 10));
@@ -135,22 +142,32 @@ void hospitalRibbonsManager::update(){
 // -------------------------------------------------------------------------------------------
 void hospitalRibbonsManager::draw(){
     
-    ofBackground(pcBackGround);
+    ofPopStyle();
+    ofEnableAlphaBlending();
+    ofSetCircleResolution(36);
     
-    if(pbDrawCurves==false && pbDrawMeshes==false){
+    if(pbDrawCurves==false && pbDrawMeshes==false && pbDrawDebug==false && pbDrawCircles==false){
         return;
     }
     
     map<string, hospitalRibbon>::iterator oneRibbon;
     for (oneRibbon=mRibbons.begin(); oneRibbon!=mRibbons.end(); oneRibbon++) {
         
-        oneRibbon->second.drawCamText();
+        if (pbDrawDebug) {
+            oneRibbon->second.drawCamText();
+        }
         
         // Calculating ratio based on last move time
         float ratio = ofClamp((ofGetElapsedTimef() - oneRibbon->second.getTimeStampf())/pfFadeTime, 0, 1);
         // Fade to background
         ofColor drawColor = fadingColors(ratio, pcForeGround, pcBackGround);
-
+        
+        if (pbDrawCircles) {
+            oneRibbon->second.drawCircles(drawColor, pfMaxThickness
+                                          , piNbCircles, pfCirclesRadius
+                                          , pfCirclesRadiusDephaser, pfCirclesFreqDivider);
+        }
+        
         // Draw some meshes if you can
         if (pbDrawMeshes==true) {
             if (pbDrawRibbon1) {
@@ -191,6 +208,8 @@ void hospitalRibbonsManager::draw(){
         }
         
     }
+    
+    ofPopStyle();
 }
 
 // -------------------------------------------------------------------------------------------

@@ -26,6 +26,46 @@ void hospitalRibbon::drawCamText(){
 }
 
 //--------------------------------------------------------------
+void hospitalRibbon::drawCircles(ofColor _color, float _maxThickness
+                                 ,int _nbCircles, float _circlesRadius
+                                 ,float _radiusDephaser, float _freqDivider){
+
+    if(mPoints.size()>0){
+        
+        ofPoint center = mPoints[mPoints.size()-1];
+        
+        // One big point to hide extremity
+        ofPushStyle();
+        ofSetColor(_color);
+        ofFill();
+        
+        ofCircle(center, 1.25 * _maxThickness);
+        ofPopStyle();
+        
+        // Concentric circles
+        ofPushStyle();
+        ofSetColor(_color);
+        ofNoFill();
+        
+        for(int idxCircle=0; idxCircle<_nbCircles; idxCircle++){
+            
+            float radiusRatio = (float)idxCircle / (float)_nbCircles;
+            float myOwnDivider = radiusRatio*_freqDivider;
+            float radiusTimeRatio = fmod(mTimeStampf + radiusRatio*_radiusDephaser, myOwnDivider) / myOwnDivider;
+            float lineWidth = 5 * fmod(mTimeStampf + radiusRatio*_radiusDephaser, myOwnDivider) / myOwnDivider;
+            
+            ofSetLineWidth(lineWidth);
+            
+            ofCircle(center, _circlesRadius * radiusTimeRatio);
+            
+        }
+        ofPopStyle();
+    }
+    
+ 
+}
+
+//--------------------------------------------------------------
 void hospitalRibbon::drawShape(ofColor _color
                                , float _minThickness, float _maxThickness
                                , int globalPointsDiv
@@ -187,17 +227,18 @@ bool hospitalRibbon::IsThereAPointNearToMe(ofPoint _p, float _matchingDistance){
     
     vector<ofPoint>::iterator onePoint;
     for (onePoint = mPoints.begin(); onePoint != mPoints.end(); onePoint++) {
-        if (_p.distance(*onePoint) <= _matchingDistance) {
+        
+        ofPoint entryPoint = _p;
+        _p.z = 0;
+        ofPoint testedPoint = *onePoint;
+        testedPoint.z = 0;
+        
+        if (entryPoint.distance(testedPoint) <= _matchingDistance) {
+            // Some point is near enough
             ofLogVerbose() << "Match Distance";
             return true;
         }
     }
     return false;
-    /*
-    if(ofRandomf()>0.9){
-        return true;
-    }else{
-        return false;
-    }
-     */
+
 }

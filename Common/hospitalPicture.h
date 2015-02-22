@@ -19,9 +19,13 @@ private:
     float  mFadeInSec;
     float  mFadeOutSec;
     
+    
 public:
     
-    void draw(bool _drawDebug, bool _drawImage, string _path, float _resizeRatio);
+    ofImage mImage;
+    
+    void setup(ofImage _image);
+    void draw(bool _drawDebug, bool _drawImage);
     
     void refresh(){mTimeStamp = ofGetElapsedTimef();};
     float getAscTimeRatio();

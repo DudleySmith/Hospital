@@ -28,6 +28,8 @@ public:
     void draw();
     
     void setPicturePositions(map<string, hospitalMeetingPoint> _pp);
+    ofImage getANewImage();
+    
     
     ofParameterGroup     pgPictures;
     ofParameter<bool>    pbDrawDebug;
@@ -37,6 +39,8 @@ public:
     ofParameter<float>   pfFadeOutInSec;
     ofParameter<float>   pfResizeRatio;
     ofParameter<int>     piNbImages;
+    
+    vector<ofImage>      mImages;
     
     
 };

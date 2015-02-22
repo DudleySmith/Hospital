@@ -1,10 +1,10 @@
 <group>
-	<drawDebug>1</drawDebug>
+	<drawDebug>0</drawDebug>
 	<drawImage>1</drawImage>
-	<path>/pictures</path>
-	<fadeIn>5</fadeIn>
-	<fadeOur>5</fadeOur>
+	<path>pictures/</path>
+	<fadeIn>1.6</fadeIn>
+	<fadeOur>3.1</fadeOur>
 	<resizeRatio>0.25</resizeRatio>
-	<nbImages>16</nbImages>
+	<nbImages>8</nbImages>
 <group/>
 </group>

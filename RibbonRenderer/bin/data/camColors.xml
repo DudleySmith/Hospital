@@ -1,0 +1,83 @@
+<colorSets>
+	<!-- DARK SEA (BrunRouge + 2 gris + Bleu) -->
+	<colorSet>
+		<name>cam1</name>
+		<color>
+			<probability>0.5</probability>
+			<red>181</red>
+			<green>015</green>
+			<blue>015</blue>
+		</color>
+		<color>
+			<probability>0.1</probability>
+			<red>073</red>
+			<green>007</green>
+			<blue>234</blue>
+		</color>
+		<color>
+			<probability>0.3</probability>
+			<red>81</red>
+			<green>81</green>
+			<blue>81</blue>
+		</color>
+		<color>
+			<probability>0.1</probability>
+			<red>193</red>
+			<green>193</green>
+			<blue>193</blue>
+		</color>
+	</colorSet>
+
+	<!-- POP SEA (Violet, Blanc, Orange) -->
+	<colorSet>
+		<name>cam2</name>
+		<color>
+			<probability>0.6</probability>
+			<red>255</red>
+			<green>255</green>
+			<blue>234</blue>
+		</color>
+		<color>
+			<probability>0.1</probability>
+			<red>252</red>
+			<green>131</green>
+			<blue>000</blue>
+		</color>
+		<color>
+			<probability>0.3</probability>
+			<red>073</red>
+			<green>007</green>
+			<blue>234</blue>
+		</color>
+	</colorSet>
+	
+	<!-- POP 4 (2 bleus, Orange, jaune) -->
+	<colorSet>
+		<name>cam3</name>
+		<color>
+			<probability>0.25</probability>
+			<red>47</red>
+			<green>85</green>
+			<blue>154</blue>
+		</color>
+		<color>
+			<probability>0.25</probability>
+			<red>226</red>
+			<green>82</green>
+			<blue>19</blue>
+		</color>
+		<color>
+			<probability>0.25</probability>
+			<red>000</red>
+			<green>139</green>
+			<blue>206</blue>
+		</color>
+		<color>
+			<probability>0.25</probability>
+			<red>245</red>
+			<green>219</green>
+			<blue>18</blue>
+		</color>
+	</colorSet>
+	
+</colorSets>

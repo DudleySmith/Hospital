@@ -44,12 +44,19 @@ private:
     
     ofParameter<bool>    pbDrawCurves;
     ofParameter<bool>    pbDrawMeshes;
+    ofParameter<bool>    pbDrawDebug;
+    ofParameter<bool>    pbDrawCircles;
     
     ofParameter<float>   pfFadeTime;
     ofParameter<float>   pfDownSpeed;
     ofParameter<float>   pfMinThickness;
     ofParameter<float>   pfMaxThickness;
     ofParameter<float>   pfMatchingDistance;
+    
+    ofParameter<int>     piNbCircles;
+    ofParameter<float>   pfCirclesRadius;
+    ofParameter<float>   pfCirclesFreqDivider;
+    ofParameter<float>   pfCirclesRadiusDephaser;
     
     ofParameterGroup   pgRibbon1;
     ofParameter<bool>  pbDrawRibbon1;
