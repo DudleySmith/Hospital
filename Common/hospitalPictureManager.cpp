@@ -9,16 +9,34 @@
 #include "hospitalPictureManager.h"
 
 // -------------------------------------------------------------------------------------------
+hospitalPictureManager::hospitalPictureManager(){
+    
+    pgPictures.add(pbDrawDebug.set("drawDebug", true));
+    pgPictures.add(pbDrawImage.set("drawImage", true));
+    pgPictures.add(psPicturesPath.set("path", "/pictures"));
+    pgPictures.add(pfFadeInInSec.set("fadeIn", 5, 0, 20));
+    pgPictures.add(pfFadeOutInSec.set("fadeOur", 5, 0, 20));
+    pgPictures.add(pfResizeRatio.set("resizeRatio", 0.25, 0, 1));
+    pgPictures.add(piNbImages.set("nbImages", 3, 0, 50));
+    
+}
+
+// -------------------------------------------------------------------------------------------
+void hospitalPictureManager::setup(){
+    
+}
+
+// -------------------------------------------------------------------------------------------
 void hospitalPictureManager::update(){
-/*
+    
     map<string, hospitalPicture>::iterator pic;
     
     for (pic = mPicturePositions.begin(); pic != mPicturePositions.end(); pic++) {
-        if(ofGetElapsedTimef() > (pic->second.getTimeStamp() + 5.0f)){
+        if(pic->second.getAscTimeRatio() >= 1.0f){
             mPicturePositions.erase(pic);
         }
-    }*/
-    
+    }
+
 }
 
 // -------------------------------------------------------------------------------------------
@@ -30,15 +48,7 @@ void hospitalPictureManager::draw(){
     map<string, hospitalPicture>::iterator pic;
     
     for (pic = mPicturePositions.begin(); pic != mPicturePositions.end(); pic++) {
-        
-        float timeRatio = (ofGetElapsedTimef() - pic->second.getTimeStamp()) / LIFE_TIME;
-        
-        if(timeRatio > 1.0f){
-            mPicturePositions.erase(pic);
-        }else{
-            ofCircle(pic->second.getPos(), 25 * (1.0f -timeRatio));
-            ofDrawBitmapString(ofToString(timeRatio), pic->second.getPos());
-        }
+        pic->second.draw(pbDrawDebug, pbDrawImage, "pictures/HiCulture_00.jpg", pfResizeRatio);
     }
     
     ofPopStyle();
@@ -56,16 +66,21 @@ void hospitalPictureManager::setPicturePositions(map<string, hospitalMeetingPoin
         
         if (foundPicture != mPicturePositions.end()) {
             // This picture exists
-            foundPicture->second.setPos(meetingPoint->second.getPos());
-            foundPicture->second.refresh();
+            //foundPicture->second.setPos(meetingPoint->second.getPos());
+            //foundPicture->second.refresh();
         }else{
-            // No Pictures like this -> add it
-            hospitalPicture newPicture;
-            newPicture.setId(meetingPoint->second.getId());
-            newPicture.setPos(meetingPoint->second.getPos());
-            newPicture.refresh();
             
-            mPicturePositions[meetingPoint->second.getId()] = newPicture;
+            if (mPicturePositions.size() < piNbImages) {
+                // No Pictures like this -> add it
+                hospitalPicture newPicture;
+                newPicture.setFadeIn(pfFadeInInSec);
+                newPicture.setFadeOut(pfFadeOutInSec);
+                newPicture.setId(meetingPoint->second.getId());
+                newPicture.setPos(meetingPoint->second.getPos());
+                newPicture.refresh();
+                
+                mPicturePositions[meetingPoint->second.getId()] = newPicture;
+            }
             
         }
         

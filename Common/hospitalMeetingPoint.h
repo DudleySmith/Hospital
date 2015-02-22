@@ -3,8 +3,10 @@
 #include "ofMain.h"
 
 class hospitalMeetingPoint {
-    
+
+private:
     string mId;
+protected:
     ofPoint mPos;
     
 public:

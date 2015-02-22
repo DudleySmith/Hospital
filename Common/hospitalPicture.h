@@ -12,11 +12,22 @@
 #include "hospitalMeetingPoint.h"
 
 class hospitalPicture : public hospitalMeetingPoint{
+
 private:
-    float  mTimeStamp;
+    float   mTimeStamp;
+    
+    float  mFadeInSec;
+    float  mFadeOutSec;
     
 public:
+    
+    void draw(bool _drawDebug, bool _drawImage, string _path, float _resizeRatio);
+    
     void refresh(){mTimeStamp = ofGetElapsedTimef();};
-    float getTimeStamp(){return mTimeStamp;};
+    float getAscTimeRatio();
+    float getDescTimeRatio();
+    
+    void setFadeIn(float _fadeIn){mFadeInSec = _fadeIn;};
+    void setFadeOut(float _fadeOut){mFadeOutSec = _fadeOut;};
     
 };

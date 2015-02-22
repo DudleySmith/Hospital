@@ -1,6 +1,6 @@
 <ribbons>
-	<background>57, 0, 0, 0</background>
-	<foreground>122, 96, 74, 255</foreground>
+	<background>0, 0, 0, 0</background>
+	<foreground>255, 255, 255, 255</foreground>
 	<drawCurves>0</drawCurves>
 	<drawMeshes>1</drawMeshes>
 	<fade>3</fade>
@@ -8,4 +8,5 @@
 	<minThickness>1.75</minThickness>
 	<maxThickness>7</maxThickness>
 <ribbons/>
+<matchingDistance>100</matchingDistance>
 </ribbons>

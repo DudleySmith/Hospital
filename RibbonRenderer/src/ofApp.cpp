@@ -34,11 +34,18 @@ void ofApp::setup(){
     ribbonManager.parametersFx.setName("ribbonsFx");
     plRibbonsFx.setup(ribbonManager.parametersFx, "ribbonsFx.xml");
     plRibbonsFx.loadFromFile("ribbonsFx.xml");
+    // Pictures manager panel
+    plPictures.setup(pictureManager.pgPictures, "pictures.xml");
+    plPictures.loadFromFile("pictures.xml");
     
     // Positions
-    plRibbons.setPosition(25, 25);
-    plRibbonsFx.setPosition(275, 25);
-    plOsc.setPosition(525, 25);
+    int idxPositionX = 0;
+    int stepPositionX = 250;
+    
+    plRibbons.setPosition(25 + stepPositionX*idxPositionX++, 25);
+    plRibbonsFx.setPosition(25 + stepPositionX*idxPositionX++, 25);
+    plOsc.setPosition(25 + stepPositionX*idxPositionX++, 25);
+    plPictures.setPosition(25 + stepPositionX*idxPositionX++, 25);
     
     mDrawGui = false;
     
@@ -65,6 +72,7 @@ void ofApp::draw(){
         plOsc.draw();
         plRibbons.draw();
         plRibbonsFx.draw();
+        plPictures.draw();
         ofDrawBitmapString("Ribbons count=" + ribbonManager.countMessage(), ofPoint(25, ofGetHeight() - 25));
     }
     

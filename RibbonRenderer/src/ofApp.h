@@ -43,6 +43,7 @@ class ofApp : public ofBaseApp{
     ofxPanel plOsc;
     ofxPanel plRibbons;
     ofxPanel plRibbonsFx;
+    ofxPanel plPictures;
     
     bool mDrawGui;
     

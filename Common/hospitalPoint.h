@@ -12,7 +12,7 @@
 #include "hospitalMessage.h"
 
 class hospitalPoint {
-    
+
     string mBlobId;
     ofPoint mPosition;
     ofPoint mVelocity;
